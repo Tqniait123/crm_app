@@ -1,0 +1,37 @@
+# Enhanced Mason Configuration for CRM App Template
+bricks:
+  # Feature Brick - Creates complete feature with Clean Architecture
+  feature:
+    path: bricks/feature
+
+  # Page Brick - Creates a new screen/page with Cubit
+  page:
+    path: bricks/page
+
+  # Widget Brick - Creates reusable custom widgets
+  widget:
+    path: bricks/widget
+
+  # Model Brick - Creates data models with JSON serialization
+  model:
+    path: bricks/model
+
+  # Cubit Brick - Creates state management cubit
+  cubit:
+    path: bricks/cubit
+
+  # Repository Brick - Creates data repository
+  repository:
+    path: bricks/repository
+
+  # API Service Brick - Creates API service classes
+  api_service:
+    path: bricks/api_service
+
+  # Dialog Brick - Creates custom dialogs and bottom sheets
+  dialog:
+    path: bricks/dialog
+
+  # Theme Brick - Creates theme-related components
+  theme:
+    path: bricks/theme

@@ -1,0 +1,86 @@
+name: feature
+description: ⚡ Generate a complete Flutter feature with Clean Architecture, Cubit, API integration, and responsive UI
+version: 1.0.0+1
+
+repository: https://github.com/yourusername/crm-app-bricks
+
+vars:
+  feature_name:
+    type: string
+    description: The name of the feature (e.g., user_management, product_catalog)
+    default: my_feature
+    prompt: 🎯 What is the feature name?
+  
+  project_name:
+    type: string
+    description: The name of your project (used for imports)
+    default: crm_app
+    prompt: 📱 What is your project name?
+  
+  has_models:
+    type: boolean
+    description: Generate data models with JSON serialization
+    default: true
+    prompt: 📦 Include data models?
+  
+  has_params:
+    type: boolean
+    description: Generate request parameter classes
+    default: true
+    prompt: 📋 Include request parameters?
+  
+  has_cubit:
+    type: boolean
+    description: Generate BLoC cubit for state management
+    default: true
+    prompt: 🔄 Include BLoC cubit?
+  
+  has_widgets:
+    type: boolean
+    description: Generate custom widgets for this feature
+    default: true
+    prompt: 🎨 Include custom widgets?
+  
+  has_tests:
+    type: boolean
+    description: Generate unit and widget tests
+    default: true
+    prompt: 🧪 Include tests?
+  
+  api_endpoint:
+    type: string
+    description: API endpoint for this feature (e.g., /users, /products)
+    default: "/{{feature_name.snakeCase()}}"
+    prompt: 🌐 What is the API endpoint?
+  
+  has_pagination:
+    type: boolean
+    description: Include pagination support
+    default: false
+    prompt: 📄 Include pagination support?
+  
+  has_search:
+    type: boolean
+    description: Include search functionality
+    default: false
+    prompt: 🔍 Include search functionality?
+  
+  crud_operations:
+    type: array
+    description: CRUD operations to include
+    default:
+      - create
+      - read
+      - update
+      - delete
+    prompt: "📝 Select CRUD operations (create,read,update,delete):"
+  
+  ui_style:
+    type: enum
+    description: UI style for the feature
+    default: modern
+    values:
+      - modern
+      - material
+      - cupertino
+    prompt: 🎨 Choose UI style (modern/material/cupertino):
