@@ -28,6 +28,31 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  file_picker:
+  dropdown_button2:
+  flutter_spinkit:
+  auto_size_text:
+  fluttertoast:
+  get_it:
+  logger:
+  shimmer:
+  flutter_svg:
+  url_launcher:
+  flutter_html:
+  go_router:
+  connectivity_plus:
+  pretty_dio_logger:
+  dio:
+  bot_toast:
+  flutter_screenutil:
+  shared_preferences:
+  easy_localization:
+  equatable:
+  smooth_page_indicator:
+  percent_indicator:
+  cached_network_image:
+  dartz:
+  flutter_bloc:
   flutter:
     sdk: flutter
 

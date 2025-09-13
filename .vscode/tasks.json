@@ -9,6 +9,10 @@
         "kind": "build",
         "isDefault": false
       },
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared"
+      },
       "problemMatcher": [],
       "detail": "Replaces lib folder using Git sparse checkout, adds colored logs, and replaces placeholders like 'crm_app/' and 'CrmApp' across the project."
     },
@@ -16,13 +20,19 @@
       "label": "Install Flutter packages",
       "type": "shell",
       "command": "if [ \"$(uname)\" = \"Darwin\" ] || [ \"$(uname)\" = \"Linux\" ]; then if [ ! -f pubspec.yaml ]; then echo -e \"\\033[31mError: pubspec.yaml not found\\033[0m\" && exit 1; fi; echo -e \"\\033[32mFound pubspec.yaml\\033[0m\"; packages=('flutter_bloc' 'dartz' 'cached_network_image' 'percent_indicator' 'smooth_page_indicator' 'equatable' 'easy_localization' 'shared_preferences' 'flutter_screenutil' 'bot_toast' 'dio' 'pretty_dio_logger' 'connectivity_plus' 'go_router' 'flutter_html' 'url_launcher' 'flutter_svg' 'shimmer' 'logger' 'get_it' 'fluttertoast' 'auto_size_text' 'flutter_spinkit' 'dropdown_button2' 'file_picker'); for pkg in \"${packages[@]}\"; do if ! grep -q \"^[[:space:]]*$pkg:\" pubspec.yaml; then temp_file=$(mktemp); awk -v pkg=\"$pkg\" '/^dependencies:/{print; print \"  \" pkg \":\"; next} {print}' pubspec.yaml > \"$temp_file\" && mv \"$temp_file\" pubspec.yaml && echo -e \"\\033[32mAdded $pkg to pubspec.yaml\\033[0m\"; else echo -e \"\\033[32mSkipped $pkg (already in pubspec.yaml)\\033[0m\"; fi; done; flutter pub get && echo -e \"\\033[32mRan flutter pub get successfully\\033[0m\" || echo -e \"\\033[31mError: Failed to run flutter pub get\\033[0m\"; else powershell -Command \"if (-not (Test-Path pubspec.yaml)) { Write-Host -ForegroundColor Red 'Error: pubspec.yaml not found'; exit 1 }; Write-Host -ForegroundColor Green 'Found pubspec.yaml'; $packages = @('flutter_bloc', 'dartz' , 'cached_network_image' , 'percent_indicator' ,'smooth_page_indicator' ,'equatable','easy_localization', 'shared_preferences', 'flutter_screenutil', 'bot_toast', 'dio', 'pretty_dio_logger', 'connectivity_plus', 'go_router', 'flutter_html', 'url_launcher', 'flutter_svg', 'shimmer', 'logger', 'get_it', 'fluttertoast', 'auto_size_text', 'flutter_spinkit', 'dropdown_button2', 'file_picker'); foreach ($pkg in $packages) { if (-not (Select-String -Path pubspec.yaml -Pattern \\\"^\\\\s*$pkg\\:\\\")) { $content = Get-Content pubspec.yaml; $newContent = @(); $dependenciesFound = $false; foreach ($line in $content) { $newContent += $line; if ($line -match '^dependencies:' -and -not $dependenciesFound) { $newContent += \\\"  $pkg:\\\"; $dependenciesFound = $true; Write-Host -ForegroundColor Green \\\"Added $pkg to pubspec.yaml\\\" } }; Set-Content pubspec.yaml $newContent } else { Write-Host -ForegroundColor Green \\\"Skipped $pkg (already in pubspec.yaml)\\\" } }; flutter pub get; if ($?) { Write-Host -ForegroundColor Green 'Ran flutter pub get successfully' } else { Write-Host -ForegroundColor Red 'Error: Failed to run flutter pub get' }\"; fi",
-      "dependsOn": ["Replace lib folder with setup_project lib"],
+      "dependsOn": [
+        "Replace lib folder with setup_project lib"
+      ],
       "group": {
         "kind": "build",
         "isDefault": false
       },
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared"
+      },
       "problemMatcher": [],
-      "detail": "Installs specified Flutter packages in pubspec.yaml without versions, allowing latest versions, with colored logs, handling macOS/Linux and Windows. Runs automatically after 'Replace lib folder with setup_project lib'."
+      "detail": "Installs specified Flutter packages in pubspec.yaml without versions, allowing latest versions, with colored logs, handling macOS/Linux and Windows."
     },
     {
       "label": "Run Flutter pub get only",
@@ -31,6 +41,10 @@
       "group": {
         "kind": "build",
         "isDefault": false
+      },
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared"
       },
       "problemMatcher": [],
       "detail": "Simply runs flutter pub get without adding packages."
@@ -43,6 +57,10 @@
         "kind": "build",
         "isDefault": false
       },
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared"
+      },
       "problemMatcher": [],
       "detail": "Completely cleans and reinstalls all Flutter dependencies to fix package recognition issues."
     },
@@ -54,22 +72,26 @@
         "kind": "build",
         "isDefault": false
       },
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared"
+      },
       "problemMatcher": [],
-      "detail": "Automatically detects the project name from folder and replaces all 'project_name' and 'ProjectName' placeholders throughout the codebase with proper names."
+      "detail": "Automatically detects the project name from folder and replaces all 'project_name' and 'ProjectName' placeholders throughout the codebase."
     },
     {
       "label": "Reload VS Code Window",
       "type": "shell",
       "command": "${command:workbench.action.reloadWindow}",
-      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
       "presentation": {
         "reveal": "never",
         "panel": "shared"
       },
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
+      "problemMatcher": [],
       "detail": "Attempts to reload VS Code window automatically using system commands."
     },
     {
