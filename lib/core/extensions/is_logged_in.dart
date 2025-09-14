@@ -1,11 +1,11 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:crm_app/config/app_settings/cubit/settings_cubit.dart';
 import 'package:crm_app/config/routes/routes.dart';
 import 'package:crm_app/config/shared/controllers/user_cubit/user_cubit.dart';
 import 'package:crm_app/core/translations/locale_keys.g.dart';
 import 'package:crm_app/features/auth/data/models/responses/user.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 extension UserCubitX on BuildContext {
   UserCubit get userCubit => UserCubit.get(this);
@@ -249,7 +249,7 @@ class NotVerifiedBottomSheet extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                     // Navigate to edit profile screen
-                    context.push(Routes.editProfile);
+                    // context.push(Routes.editProfile);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Theme.of(context).primaryColor,

@@ -48,6 +48,7 @@ class AppIcons {
   static const String carIc = '$_iconsPath/car_ic.svg';
   static const String notificationLabelIc = '$_iconsPath/notification_label_ic.svg';
   static const String logo = '$_iconsPath/logo_ic.svg';
+  static const String wideLogo = '$_iconsPath/wide_logo.svg';
   static const String wantedIc = '$_iconsPath/wanted_ic.svg';
   static const String notificationsIc = '$_iconsPath/notifications_ic.svg';
 }

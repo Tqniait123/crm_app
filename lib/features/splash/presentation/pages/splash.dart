@@ -130,7 +130,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
 
     if (!isOnBoardingCompleted) {
       // Navigate to onboarding if not completed
-      context.go(Routes.onBoarding1);
+      context.go(Routes.secondSplash);
     } else {
       // Always navigate to login screen
       context.go(Routes.login);

@@ -14,25 +14,6 @@ class Routes {
   static const String resetPassword = '/resetPassword';
 
   static const String notifications = '/notifications';
-  static const String checkYourEmail = '/checkYourEmail';
-  static const String explore = '/explore';
-  static const String maps = '/maps';
-  static const String parkingDetails = '/parkingDetails';
-  static const String routing = '/routing';
-  static const String myCards = '/myCards';
-  static const String profile = '/profile';
-  static const String editProfile = '/editProfile';
-  static const String myQrCode = '/myQrCode';
-  static const String history = '/history';
-  static const String scanQrcode = '/scanQrcode';
-  static const String myCars = '/myCars';
-  static const String faq = '/faq';
-  static const String termsAndConditions = '/termsAndConditions';
-  static const String privacyPolicy = '/privacyPolicy';
-  static const String contactUs = '/contactUs';
-  static const String aboutUs = '/aboutUs';
-  static const String settings = '/settings';
-  static const String offers = '/offers';
-  static const String payment = '/payment';
+ 
 
 }

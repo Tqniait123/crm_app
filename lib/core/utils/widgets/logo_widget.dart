@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:crm_app/core/extensions/widget_extensions.dart';
 import 'package:crm_app/core/static/app_assets.dart';
 import 'package:crm_app/core/static/icons.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-enum LogoType { svg, png }
+enum LogoType { svg, png, wide }
 
 class LogoWidget extends StatelessWidget {
   final double? size;
@@ -24,6 +24,10 @@ class LogoWidget extends StatelessWidget {
         return SvgPicture.asset(AppIcons.logo, width: size, colorFilter: color?.colorFilter);
       case LogoType.png:
         return Image.asset(AppImages.logo, width: size);
+      case LogoType.wide:
+        return SvgPicture.asset(AppIcons.wideLogo, width: size, colorFilter: color?.colorFilter);
+      default:
+        return SvgPicture.asset(AppIcons.logo, width: size, colorFilter: color?.colorFilter);
     }
   }
 }

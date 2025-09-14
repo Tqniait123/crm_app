@@ -1,14 +1,14 @@
 // Import necessary packages and files
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:crm_app/config/routes/routes.dart';
 import 'package:crm_app/core/extensions/num_extension.dart';
 import 'package:crm_app/core/extensions/widget_extensions.dart';
 import 'package:crm_app/core/observers/router_observer.dart';
 import 'package:crm_app/core/utils/widgets/buttons/custom_back_button.dart';
 import 'package:crm_app/features/on_boarding/presentation/pages/on_boarding_screen.dart';
+import 'package:crm_app/features/splash/presentation/pages/second_splash.dart';
 import 'package:crm_app/features/splash/presentation/pages/splash.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
 final RouteObserver<ModalRoute<void>> routeObserver = RouteObserver<ModalRoute<void>>();
@@ -36,12 +36,22 @@ class AppRouter {
     routes: [
       // Define routes using GoRoute
       GoRoute(
-        redirect: (context, state) {},
+        redirect: (context, state) {
+          return null;
+        },
 
         path: Routes.initialRoute,
         builder: (context, state) {
           // Return the SplashScreen widget
           return const SplashScreen();
+        },
+      ),
+
+      GoRoute(
+        path: Routes.secondSplash,
+        builder: (context, state) {
+          // Return the SplashScreen widget
+          return const SecondSplashScreen();
         },
       ),
 
