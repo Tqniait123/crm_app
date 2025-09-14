@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   // Brand Colors - Modern and Professional
-  static const Color primary = Color(0xFF6366F1);           // Modern indigo
-  static const Color primaryDark = Color(0xFF4F46E5);       // Darker indigo
-  static const Color primaryLight = Color(0xFF8B5CF6);      // Light purple
-  static const Color secondary = Color(0xFF06B6D4);         // Cyan
-  static const Color accent = Color(0xFF8B5CF6);            // Purple
+  static const Color primary = Color(0xFFE92929); // Modern indigo
+  static const Color primaryDark = Color(0xFFE92929); // Darker indigo
+  static const Color primaryLight = Color(0xFFE92929); // Light purple
+  static const Color secondary = Color(0xFF06B6D4); // Cyan
+  static const Color accent = Color(0xFF8B5CF6); // Purple
 
   // Semantic Colors
-  static const Color success = Color(0xFF10B981);           // Green
-  static const Color warning = Color(0xFFF59E0B);           // Amber
-  static const Color error = Color(0xFFEF4444);             // Red
-  static const Color info = Color(0xFF3B82F6);              // Blue
+  static const Color success = Color(0xFF10B981); // Green
+  static const Color warning = Color(0xFFF59E0B); // Amber
+  static const Color error = Color(0xFFEF4444); // Red
+  static const Color info = Color(0xFF3B82F6); // Blue
 
   // Neutral Colors - Complete Gray Scale
   static const Color white = Color(0xFFFFFFFF);
@@ -30,6 +30,7 @@ class AppColors {
 
   // Background Colors
   static const Color background = Color(0xFFFAFAFA);
+  static const Color splashBackground = Color(0xFF0B0B26);
   static const Color surface = Color(0xFFFFFFFF);
   static const Color surfaceVariant = Color(0xFFF5F5F5);
 
@@ -47,17 +48,17 @@ class AppColors {
   static const Color whiteFFF = Color(0xFFF1ECEC);
   static const Color whiteF3 = Color(0xFFF3F3F3);
   static const Color whiteEA = Color(0xFFEAEAF3);
-  
+
   // Border Colors
   static const Color border = Color(0xFFE5E7EB);
   static const Color borderFocus = Color(0xFF6366F1);
   static const Color borderColor = Color(0xFFEAEAEA);
-  
+
   // Status Colors
   static const Color online = Color(0xFF10B981);
   static const Color offline = Color(0xFF6B7280);
   static const Color pending = Color(0xFFF59E0B);
-  
+
   // Legacy grays - mapped to new system
   static const Color grey = grey500;
   static const Color grey4A = grey600;
@@ -113,27 +114,15 @@ class AppColors {
 
   // Shadow definitions
   static List<BoxShadow> get defaultShadow => [
-    BoxShadow(
-      color: black.withOpacity(0.05),
-      blurRadius: 8,
-      offset: const Offset(0, 2),
-    ),
+    BoxShadow(color: black.withOpacity(0.05), blurRadius: 8, offset: const Offset(0, 2)),
   ];
 
   static List<BoxShadow> get mediumShadow => [
-    BoxShadow(
-      color: black.withOpacity(0.1),
-      blurRadius: 12,
-      offset: const Offset(0, 4),
-    ),
+    BoxShadow(color: black.withOpacity(0.1), blurRadius: 12, offset: const Offset(0, 4)),
   ];
 
   static List<BoxShadow> get largeShadow => [
-    BoxShadow(
-      color: black.withOpacity(0.15),
-      blurRadius: 20,
-      offset: const Offset(0, 8),
-    ),
+    BoxShadow(color: black.withOpacity(0.15), blurRadius: 20, offset: const Offset(0, 8)),
   ];
 
   // Helper methods
