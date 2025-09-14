@@ -11,6 +11,7 @@ import 'package:crm_app/core/utils/widgets/buttons/custom_elevated_button.dart';
 import 'package:crm_app/features/on_boarding/presentation/widgets/custom_page_view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -267,7 +268,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 shape: BoxShape.circle,
                 border: Border.all(color: Colors.grey.withOpacity(0.3)),
               ),
-              child: ClipOval(child: Image.asset(_getSelectedLanguageFlag(), fit: BoxFit.cover)),
+              child: ClipOval(
+                child: SvgPicture.asset(
+                  _getSelectedLanguageFlag(),
+                  fit: BoxFit.cover,
+                  placeholderBuilder: (context) => Container(color: Colors.grey.withOpacity(0.3)),
+                ),
+              ),
             ),
             const SizedBox(width: 8),
 
