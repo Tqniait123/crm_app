@@ -90,7 +90,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   }
 
   void _handleCreateAccount() {
-    _completeOnBoarding(Routes.register);
+    _completeOnBoarding(Routes.login);
   }
 
   void _completeOnBoarding(String route) {
@@ -324,9 +324,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           child: _currentPage == 2
               ? CustomElevatedButton(
                   key: const ValueKey('create_account_button'),
-                  heroTag: 'create_account',
+                  heroTag: 'login',
                   // backgroundColor: Colors.pr,
-                  title: LocaleKeys.create_account.tr(),
+                  title: LocaleKeys.login.tr(),
                   // textColor: Colors.black,
                   onPressed: _handleCreateAccount,
                 )
@@ -336,7 +336,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
         // Create account button
         CustomElevatedButton(
-          heroTag: 'create_account',
+          heroTag: 'next',
           // isFilled: false,
           backgroundColor: Colors.white,
           title: LocaleKeys.next.tr(),

@@ -1,14 +1,14 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:crm_app/core/extensions/flipped_for_lcale.dart';
 import 'package:crm_app/core/extensions/sized_box.dart';
 import 'package:crm_app/core/extensions/txt_theme.dart';
 import 'package:crm_app/core/functions/unfocus.dart';
 import 'package:crm_app/core/theme/colors.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 enum IconPosition { start, end }
 
@@ -148,66 +148,85 @@ class _CustomElevatedButtonState extends State<CustomElevatedButton> with Single
               child: Opacity(
                 opacity: _isPressed ? 0.7 : (widget.loading ? 0.5 : 1.0),
                 child: Container(
-                  width: double.infinity,
-                  height: widget.height?.h ?? 44.h,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    border: widget.isBordered
-                        ? Border.all(color: widget.isDisabled ? AppColors.disableColor : AppColors.greyED, width: 1.0)
-                        : null,
-                    borderRadius: widget.borderRadius ?? BorderRadius.circular(15),
-                    color: widget.isDisabled
-                        ? AppColors.disableColor
-                        : (widget.isFilled ? (widget.backgroundColor ?? AppColors.primary) : AppColors.whiteEA),
-                    boxShadow: widget.withShadow
-                        ? [BoxShadow(color: Colors.black.withOpacity(0.1), offset: const Offset(0, 4), blurRadius: 8)]
-                        : [],
-                  ),
-                  padding: EdgeInsets.symmetric(horizontal: widget.padding),
-                  child: AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 300),
-                    transitionBuilder: (child, animation) {
-                      return FadeTransition(
-                        opacity: animation,
-                        child: ScaleTransition(scale: animation, child: child),
-                      );
-                    },
-                    child: widget.loading
-                        ? SpinKitWave(
-                            key: const ValueKey('loading'),
-                            color: widget.iconColor,
-                            size: 20,
-                            type: SpinKitWaveType.start,
-                          )
-                        : Row(
-                            key: const ValueKey('content'),
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              if (widget.icon != null &&
-                                  (widget.iconType == IconType.leading || widget.iconType == IconType.center)) ...[
-                                _buildIcon() ?? const SizedBox.shrink(),
-                                7.pw,
-                              ],
-                              Expanded(
-                                child: AutoSizeText(
-                                  widget.title.tr(),
-                                  style: context.theme.textTheme.bodySmall!.copyWith(
-                                    color: widget.textColor ?? (widget.isFilled ? AppColors.white : Color(0xff2D2D2D)),
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  maxLines: 1,
-                                  minFontSize: 10,
-                                  overflow: TextOverflow.ellipsis,
-                                  textAlign: TextAlign.center,
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Color(0xffEFF6FF)),
+                  padding: const EdgeInsets.all(3),
+                  child: Container(
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Color(0xffBFDBFE)),
+                    padding: const EdgeInsets.all(2),
+
+                    child: Container(
+                      width: double.infinity,
+                      height: widget.height?.h ?? 44.h,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        border: widget.isBordered
+                            ? Border.all(
+                                color: widget.isDisabled ? AppColors.disableColor : AppColors.greyED,
+                                width: 1.0,
+                              )
+                            : null,
+                        borderRadius: widget.borderRadius ?? BorderRadius.circular(15),
+                        color: widget.isDisabled
+                            ? AppColors.disableColor
+                            : (widget.isFilled ? (widget.backgroundColor ?? AppColors.primary) : AppColors.whiteEA),
+                        boxShadow: widget.withShadow
+                            ? [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.1),
+                                  offset: const Offset(0, 4),
+                                  blurRadius: 8,
                                 ),
+                              ]
+                            : [],
+                      ),
+                      padding: EdgeInsets.symmetric(horizontal: widget.padding),
+                      child: AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 300),
+                        transitionBuilder: (child, animation) {
+                          return FadeTransition(
+                            opacity: animation,
+                            child: ScaleTransition(scale: animation, child: child),
+                          );
+                        },
+                        child: widget.loading
+                            ? SpinKitWave(
+                                key: const ValueKey('loading'),
+                                color: widget.iconColor,
+                                size: 20,
+                                type: SpinKitWaveType.start,
+                              )
+                            : Row(
+                                key: const ValueKey('content'),
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  if (widget.icon != null &&
+                                      (widget.iconType == IconType.leading || widget.iconType == IconType.center)) ...[
+                                    _buildIcon() ?? const SizedBox.shrink(),
+                                    7.pw,
+                                  ],
+                                  Expanded(
+                                    child: AutoSizeText(
+                                      widget.title.tr(),
+                                      style: context.theme.textTheme.bodySmall!.copyWith(
+                                        color:
+                                            widget.textColor ?? (widget.isFilled ? AppColors.white : Color(0xff2D2D2D)),
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      maxLines: 1,
+                                      minFontSize: 10,
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                  if (widget.icon != null &&
+                                      (widget.iconType == IconType.trailing || widget.iconType == IconType.center)) ...[
+                                    7.pw,
+                                    _buildFlippedIcon(context) ?? const SizedBox.shrink(),
+                                  ],
+                                ],
                               ),
-                              if (widget.icon != null &&
-                                  (widget.iconType == IconType.trailing || widget.iconType == IconType.center)) ...[
-                                7.pw,
-                                _buildFlippedIcon(context) ?? const SizedBox.shrink(),
-                              ],
-                            ],
-                          ),
+                      ),
+                    ),
                   ),
                 ),
               ),
