@@ -4,6 +4,7 @@ import 'package:crm_app/core/extensions/num_extension.dart';
 import 'package:crm_app/core/extensions/widget_extensions.dart';
 import 'package:crm_app/core/observers/router_observer.dart';
 import 'package:crm_app/core/utils/widgets/buttons/custom_back_button.dart';
+import 'package:crm_app/features/auth/presentation/views/login_screen.dart';
 import 'package:crm_app/features/on_boarding/presentation/pages/on_boarding_screen.dart';
 import 'package:crm_app/features/splash/presentation/pages/second_splash.dart';
 import 'package:crm_app/features/splash/presentation/pages/splash.dart';
@@ -60,6 +61,13 @@ class AppRouter {
         builder: (context, state) {
           // Return the SplashScreen widget
           return const OnBoardingScreen();
+        },
+      ),
+      GoRoute(
+        path: Routes.login,
+        builder: (context, state) {
+          // Return the LoginScreen widget
+          return const LoginScreen();
         },
       ),
     ],
