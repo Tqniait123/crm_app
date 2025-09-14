@@ -1,9 +1,7 @@
 import 'package:crm_app/config/app_settings/cubit/settings_cubit.dart';
 import 'package:crm_app/config/routes/routes.dart';
-import 'package:crm_app/core/extensions/string_to_icon.dart';
 import 'package:crm_app/core/preferences/shared_pref.dart';
 import 'package:crm_app/core/services/di.dart';
-import 'package:crm_app/core/static/icons.dart';
 import 'package:crm_app/core/theme/colors.dart';
 import 'package:crm_app/core/translations/locale_keys.g.dart';
 import 'package:crm_app/core/utils/widgets/logo_widget.dart';
@@ -155,17 +153,6 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
         clipBehavior: Clip.none,
         alignment: Alignment.center,
         children: [
-          Positioned(
-            left: -300, // Shift pattern to the left
-            child: Opacity(
-              opacity: 0.3,
-              child: AppIcons.splashPattern.svg(
-                width: MediaQuery.sizeOf(context).width * 1.2,
-                height: MediaQuery.sizeOf(context).height * 1.2,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
           // Centered logo
           Center(
             child: FadeTransition(

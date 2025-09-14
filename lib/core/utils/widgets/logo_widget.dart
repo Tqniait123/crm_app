@@ -15,7 +15,13 @@ class LogoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Hero(tag: 'logo', child: _buildLogo());
+    return Hero(
+      tag: 'logo',
+      child: _buildLogo(),
+      flightShuttleBuilder: (context, animation, direction, fromContext, toContext) {
+        return Material(color: Colors.transparent, child: _buildLogo());
+      },
+    );
   }
 
   Widget _buildLogo() {

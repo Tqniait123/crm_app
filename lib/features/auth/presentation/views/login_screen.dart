@@ -8,10 +8,11 @@ import 'package:crm_app/core/translations/locale_keys.g.dart';
 import 'package:crm_app/core/utils/widgets/buttons/custom_elevated_button.dart';
 import 'package:crm_app/core/utils/widgets/inputs/custom_form_field.dart';
 import 'package:crm_app/core/utils/widgets/logo_widget.dart';
+import 'package:crm_app/core/widgets/custom_scaffold.dart';
 import 'package:crm_app/features/auth/presentation/widgets/sign_up_button.dart';
+import 'package:crm_app/features/auth/presentation/widgets/social_media_buttons.dart';
 import 'package:crm_app/features/auth/presentation/widgets/terms_agreement_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:crm_app/features/auth/presentation/widgets/social_media_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -28,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool isRemembered = false;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return CustomScaffold(
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
