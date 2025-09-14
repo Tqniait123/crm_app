@@ -131,7 +131,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
       context.go(Routes.secondSplash);
     } else {
       // Always navigate to login screen
-      context.go(Routes.login);
+      context.go(Routes.secondSplash);
     }
   }
 

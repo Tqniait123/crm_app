@@ -111,7 +111,7 @@ class _SecondSplashScreenState extends State<SecondSplashScreen> with TickerProv
       context.go(Routes.onBoarding1);
     } else {
       // Always navigate to login screen
-      context.go(Routes.login);
+      context.go(Routes.onBoarding1);
     }
   }
 

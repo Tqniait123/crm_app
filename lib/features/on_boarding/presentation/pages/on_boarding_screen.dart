@@ -332,6 +332,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               ? CustomElevatedButton(
                   key: const ValueKey('create_account_button'),
                   heroTag: 'login',
+                  withDoubleBorder: false,
                   // backgroundColor: Colors.pr,
                   title: LocaleKeys.login.tr(),
                   // textColor: Colors.black,
@@ -344,6 +345,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         // Create account button
         CustomElevatedButton(
           heroTag: 'next',
+          withDoubleBorder: false,
           // isFilled: false,
           backgroundColor: Colors.white,
           title: LocaleKeys.next.tr(),

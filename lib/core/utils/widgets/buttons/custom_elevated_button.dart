@@ -42,7 +42,7 @@ class CustomElevatedButton extends StatefulWidget {
     required this.title,
     this.isFilled = true,
     required this.onPressed,
-    this.height = 60,
+    this.height = 50,
     this.padding = 24,
     this.icon, // Now accepts both String and IconData
     this.iconColor = AppColors.white,
