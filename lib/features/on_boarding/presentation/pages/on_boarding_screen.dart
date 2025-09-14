@@ -189,13 +189,19 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(color: Colors.black.withOpacity(0.3), borderRadius: BorderRadius.circular(20)),
-              child: Text(
-                LocaleKeys.skip.tr(),
-                style: context.textTheme.bodyLarge!.copyWith(color: Colors.white, fontWeight: FontWeight.w500),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    LocaleKeys.skip.tr(),
+                    style: context.textTheme.bodyLarge!.copyWith(color: Colors.white, fontWeight: FontWeight.w500),
+                  ),
+                  const SizedBox(width: 4),
+                  const Icon(Icons.arrow_forward_ios_rounded, color: Colors.white, size: 16),
+                ],
               ),
             ),
           ),
-
           // Language selector
           _buildLanguageSelector(),
         ],
@@ -304,9 +310,28 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   Widget _buildActionButtons() {
     return Column(
       children: [
-        // Main action button (Next/Login)
-        if (_currentPage == 2) CustomElevatedButton(title: LocaleKeys.login.tr(), onPressed: _handleNextButton),
-
+        AnimatedSwitcher(
+          duration: const Duration(milliseconds: 500),
+          transitionBuilder: (Widget child, Animation<double> animation) {
+            return SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(0.0, 0.5), // Slide up from bottom
+                end: Offset.zero,
+              ).animate(CurvedAnimation(parent: animation, curve: Curves.easeOutBack)),
+              child: FadeTransition(opacity: animation, child: child),
+            );
+          },
+          child: _currentPage == 2
+              ? CustomElevatedButton(
+                  key: const ValueKey('create_account_button'),
+                  heroTag: 'create_account',
+                  // backgroundColor: Colors.pr,
+                  title: LocaleKeys.create_account.tr(),
+                  // textColor: Colors.black,
+                  onPressed: _handleCreateAccount,
+                )
+              : const SizedBox.shrink(key: ValueKey('empty_button')),
+        ),
         20.gap,
 
         // Create account button
@@ -314,9 +339,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           heroTag: 'create_account',
           // isFilled: false,
           backgroundColor: Colors.white,
-          title: LocaleKeys.create_account.tr(),
+          title: LocaleKeys.next.tr(),
           textColor: Colors.black,
-          onPressed: _handleCreateAccount,
+          onPressed: _handleNextButton,
         ),
       ],
     );
