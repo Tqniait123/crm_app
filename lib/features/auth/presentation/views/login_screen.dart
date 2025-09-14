@@ -108,7 +108,12 @@ class _LoginScreenState extends State<LoginScreen> {
             16.gap,
             SocialMediaButtons(),
             32.gap,
-            CustomElevatedButton(title: LocaleKeys.login.tr(), onPressed: () {}),
+            CustomElevatedButton(
+              title: LocaleKeys.login.tr(),
+              onPressed: () {
+                context.push(Routes.home);
+              },
+            ),
             32.gap,
             TermsAgreementWidget(),
           ],

@@ -7,6 +7,7 @@ import 'package:crm_app/core/services/di.dart';
 import 'package:crm_app/core/utils/widgets/buttons/custom_back_button.dart';
 import 'package:crm_app/features/auth/presentation/controller/auth_cubit.dart';
 import 'package:crm_app/features/auth/presentation/views/login_screen.dart';
+import 'package:crm_app/features/home/presentation/views/home_screen.dart';
 import 'package:crm_app/features/on_boarding/presentation/pages/on_boarding_screen.dart';
 import 'package:crm_app/features/splash/presentation/pages/second_splash.dart';
 import 'package:crm_app/features/splash/presentation/pages/splash.dart';
@@ -71,6 +72,13 @@ class AppRouter {
         builder: (context, state) {
           // Return the LoginScreen widget
           return BlocProvider(create: (context) => AuthCubit(sl()), child: const LoginScreen());
+        },
+      ),
+      GoRoute(
+        path: Routes.home,
+        builder: (context, state) {
+          // Return the HomeScreen widget
+          return const HomeScreen();
         },
       ),
     ],

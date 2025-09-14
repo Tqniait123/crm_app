@@ -1,11 +1,11 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:crm_app/config/routes/routes.dart';
 import 'package:crm_app/core/extensions/num_extension.dart';
 import 'package:crm_app/core/extensions/theme_extension.dart';
 import 'package:crm_app/core/translations/locale_keys.g.dart';
 import 'package:crm_app/core/utils/widgets/buttons/custom_elevated_button.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CongratulationsBottomSheet extends StatelessWidget {
   final String message;
@@ -125,7 +125,7 @@ class CongratulationsBottomSheet extends StatelessWidget {
                   if (onContinue != null) {
                     onContinue!();
                   } else {
-                    context.go(Routes.homeUser);
+                    context.go(Routes.home);
                   }
                 },
               ),
