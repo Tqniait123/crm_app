@@ -1,18 +1,17 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:crm_app/config/routes/routes.dart';
 import 'package:crm_app/core/extensions/num_extension.dart';
 import 'package:crm_app/core/extensions/txt_theme.dart';
 import 'package:crm_app/core/preferences/shared_pref.dart';
 import 'package:crm_app/core/services/di.dart';
+import 'package:crm_app/core/static/app_assets.dart';
 import 'package:crm_app/core/static/icons.dart';
-import 'package:crm_app/core/theme/colors.dart';
 import 'package:crm_app/core/translations/locale_keys.g.dart';
 import 'package:crm_app/core/utils/dialogs/languages_bottom_sheet.dart';
 import 'package:crm_app/core/utils/widgets/buttons/custom_elevated_button.dart';
 import 'package:crm_app/features/on_boarding/presentation/widgets/custom_page_view.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 /// OnBoarding screen with language selection
@@ -29,7 +28,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   int _currentPage = 0;
 
-  final List<String> _images = [AppIcons.onBoarding1, AppIcons.onBoarding2, AppIcons.onBoarding3];
+  final List<String> _images = [AppImages.onBoarding1, AppImages.onBoarding2, AppImages.onBoarding3];
 
   @override
   void initState() {
@@ -112,16 +111,68 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            // Language selector at top
-            _buildTopLanguageBar(),
+      backgroundColor: Colors.black,
+      body: Stack(
+        children: [
+          // Full screen image background
+          _buildFullScreenImageBackground(),
 
-            // Main content
-            Expanded(child: _buildMainContent()),
-          ],
+          // Content overlay
+          _buildContentOverlay(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildFullScreenImageBackground() {
+    return Positioned.fill(
+      child: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 800),
+        switchInCurve: Curves.easeInOut,
+        switchOutCurve: Curves.easeInOut,
+        transitionBuilder: (Widget child, Animation<double> animation) {
+          return FadeTransition(
+            opacity: animation,
+            child: ScaleTransition(
+              scale: Tween<double>(
+                begin: 1.1, // Start slightly larger (zoom in effect)
+                end: 1.0, // End at normal size
+              ).animate(CurvedAnimation(parent: animation, curve: Curves.easeOut)),
+              child: child,
+            ),
+          );
+        },
+        child: SizedBox(
+          key: ValueKey(_currentPage),
+          width: double.infinity,
+          height: double.infinity,
+          child: Image.asset(
+            _images[_currentPage],
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
+            // Add these properties to ensure no borders and better quality
+            filterQuality: FilterQuality.high,
+            isAntiAlias: true,
+          ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildContentOverlay() {
+    return SafeArea(
+      child: Column(
+        children: [
+          // Language selector at top
+          _buildTopLanguageBar(),
+
+          // Spacer to push content to bottom
+          const Spacer(),
+
+          // Content section at bottom
+          _buildBottomContent(),
+        ],
       ),
     );
   }
@@ -135,9 +186,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           // Skip button
           GestureDetector(
             onTap: _handleSkip,
-            child: Text(
-              LocaleKeys.skip.tr(),
-              style: context.textTheme.bodyLarge!.copyWith(color: AppColors.primary.withOpacity(0.8)),
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              decoration: BoxDecoration(color: Colors.black.withOpacity(0.3), borderRadius: BorderRadius.circular(20)),
+              child: Text(
+                LocaleKeys.skip.tr(),
+                style: context.textTheme.bodyLarge!.copyWith(color: Colors.white, fontWeight: FontWeight.w500),
+              ),
             ),
           ),
 
@@ -148,31 +203,40 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     );
   }
 
-  Widget _buildMainContent() {
-    return Center(
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // Image section with smooth transitions
-            _buildImageSection(),
-
-            const SizedBox(height: 30),
-
-            // Page content
-            _buildPageContent(),
-
-            // Page indicators
-            _buildPageIndicators(),
-
-            const SizedBox(height: 40),
-
-            // Action buttons
-            _buildActionButtons(),
-
-            const SizedBox(height: 20),
+  Widget _buildBottomContent() {
+    return Container(
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.bottomCenter,
+          end: Alignment.topCenter,
+          colors: [
+            Colors.black.withOpacity(0.8),
+            Colors.black.withOpacity(0.6),
+            Colors.black.withOpacity(0.3),
+            Colors.transparent,
           ],
+          stops: const [0.0, 0.4, 0.7, 1.0],
         ),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // Page content
+          _buildPageContent(),
+
+          const SizedBox(height: 24),
+
+          // Page indicators
+          _buildPageIndicators(),
+
+          const SizedBox(height: 32),
+
+          // Action buttons
+          _buildActionButtons(),
+
+          const SizedBox(height: 20),
+        ],
       ),
     );
   }
@@ -199,13 +263,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 shape: BoxShape.circle,
                 border: Border.all(color: Colors.grey.withOpacity(0.3)),
               ),
-              child: ClipOval(
-                child: SvgPicture.asset(
-                  _getSelectedLanguageFlag(),
-                  fit: BoxFit.cover,
-                  placeholderBuilder: (context) => Container(color: Colors.grey.withOpacity(0.3)),
-                ),
-              ),
+              child: ClipOval(child: Image.asset(_getSelectedLanguageFlag(), fit: BoxFit.cover)),
             ),
             const SizedBox(width: 8),
 
@@ -224,31 +282,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     );
   }
 
-  Widget _buildImageSection() {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.35,
-      child: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 600),
-        transitionBuilder: (Widget child, Animation<double> animation) {
-          return FadeTransition(
-            opacity: animation,
-            child: ScaleTransition(
-              scale: Tween<double>(
-                begin: 0.8,
-                end: 1.0,
-              ).animate(CurvedAnimation(parent: animation, curve: Curves.easeOut)),
-              child: child,
-            ),
-          );
-        },
-        child: SvgPicture.asset(key: ValueKey(_currentPage), fit: BoxFit.fitWidth, _images[_currentPage]),
-      ),
-    );
-  }
-
   Widget _buildPageContent() {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.2,
+    return Container(
+      constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.25),
       child: CustomPageView(currentPage: _currentPage, pageController: _pageController),
     );
   }
@@ -258,8 +294,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       activeIndex: _currentPage,
       count: 3,
       effect: const ExpandingDotsEffect(
-        activeDotColor: AppColors.primary,
-        dotColor: AppColors.greyED,
+        activeDotColor: Colors.white,
+        dotColor: Colors.white54,
         dotHeight: 10,
         dotWidth: 10,
       ),
@@ -268,28 +304,26 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   }
 
   Widget _buildActionButtons() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 32),
-      child: Column(
-        children: [
-          // Main action button (Next/Login)
-          CustomElevatedButton(
-            title: _currentPage < 2 ? LocaleKeys.next.tr() : LocaleKeys.login.tr(),
-            onPressed: _handleNextButton,
-          ),
+    return Column(
+      children: [
+        // Main action button (Next/Login)
+        CustomElevatedButton(
+          title: _currentPage < 2 ? LocaleKeys.next.tr() : LocaleKeys.login.tr(),
+          onPressed: _handleNextButton,
+        ),
 
-          20.gap,
+        20.gap,
 
-          // Create account button
-          CustomElevatedButton(
-            heroTag: 'create_account',
-            isFilled: false,
-            title: LocaleKeys.create_account.tr(),
-            textColor: null,
-            onPressed: _handleCreateAccount,
-          ),
-        ],
-      ),
+        // Create account button
+        CustomElevatedButton(
+          heroTag: 'create_account',
+          // isFilled: false,
+          backgroundColor: Colors.white,
+          title: LocaleKeys.create_account.tr(),
+          textColor: Colors.black,
+          onPressed: _handleCreateAccount,
+        ),
+      ],
     );
   }
 }

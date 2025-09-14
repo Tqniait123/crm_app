@@ -8,6 +8,9 @@ class AppImages {
   static const String homePattern = '$_assetsPath/home_pattern.png';
   static const String wanted = '$_assetsPath/wanted.png';
   static const String popular = '$_assetsPath/popular.png';
+  static const String onBoarding1 = '$_assetsPath/on_boarding_1.png';
+  static const String onBoarding2 = '$_assetsPath/on_boarding_2.png';
+  static const String onBoarding3 = '$_assetsPath/on_boarding_3.png';
 }
 
 class AppAnimations {
