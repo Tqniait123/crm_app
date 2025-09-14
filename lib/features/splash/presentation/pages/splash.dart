@@ -1,18 +1,15 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:crm_app/config/app_settings/cubit/settings_cubit.dart';
 import 'package:crm_app/config/routes/routes.dart';
-import 'package:crm_app/core/extensions/num_extension.dart';
 import 'package:crm_app/core/extensions/string_to_icon.dart';
-import 'package:crm_app/core/extensions/text_style_extension.dart';
-import 'package:crm_app/core/extensions/theme_extension.dart';
 import 'package:crm_app/core/preferences/shared_pref.dart';
 import 'package:crm_app/core/services/di.dart';
 import 'package:crm_app/core/static/icons.dart';
 import 'package:crm_app/core/theme/colors.dart';
 import 'package:crm_app/core/translations/locale_keys.g.dart';
 import 'package:crm_app/core/utils/widgets/logo_widget.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -25,9 +22,11 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
   late AnimationController _fadeController;
   late AnimationController _positionController;
   late AnimationController _logoFadeController;
+  late AnimationController _progressController; // New controller for progress
   late Animation<double> _fadeAnimation;
   late Animation<double> _positionAnimation;
   late Animation<double> _logoFadeAnimation;
+  late Animation<double> _progressAnimation; // New animation for progress
   bool _settingsLoaded = false;
 
   @override
@@ -51,6 +50,16 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
       begin: 0.0,
       end: -20.0,
     ).animate(CurvedAnimation(parent: _positionController, curve: Curves.easeOut));
+
+    // Setup progress animation - from 0 to 1 (0% to 100%)
+    _progressController = AnimationController(
+      duration: const Duration(seconds: 2), // 2 seconds to complete
+      vsync: this,
+    );
+    _progressAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _progressController, curve: Curves.easeInOut));
 
     final settingsCubit = AppSettingsCubit.get(context);
     settingsCubit.getAppSettings().then((_) {
@@ -78,7 +87,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
                 settingsCubit.getAppSettings().then((_) {
                   if (settingsCubit.state is AppSettingsSuccessState) {
                     _settingsLoaded = true;
-                    _handleNavigation();
+                    _startAnimationSequence();
                   } else {
                     _showRetryButton(); // Retry if it fails again
                   }
@@ -99,15 +108,16 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
     // Start logo fade animation
     _logoFadeController.forward();
 
-    // Wait 2 seconds before showing welcome message and moving logo
+    // Wait 1 second before showing welcome message and moving logo
     await Future.delayed(const Duration(seconds: 1));
 
-    // Start both animations simultaneously
+    // Start fade, position, and progress animations simultaneously
     _fadeController.forward();
     _positionController.forward();
+    _progressController.forward(); // Start progress animation
 
-    // Wait 1 second after animations complete and check navigation
-    await Future.delayed(const Duration(seconds: 1));
+    // Wait for progress animation to complete (2 seconds) + a bit more
+    await Future.delayed(const Duration(milliseconds: 2500));
 
     if (mounted) {
       await _handleNavigation();
@@ -132,13 +142,14 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
     _fadeController.dispose();
     _positionController.dispose();
     _logoFadeController.dispose();
+    _progressController.dispose(); // Dispose progress controller
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primary,
+      backgroundColor: AppColors.splashBackground,
       body: Stack(
         fit: StackFit.expand,
         clipBehavior: Clip.none,
@@ -155,31 +166,75 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
               ),
             ),
           ),
+          // Centered logo
           Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // Animated logo with position change and fade
-                FadeTransition(
-                  opacity: _logoFadeAnimation,
-                  child: AnimatedBuilder(
-                    animation: _positionAnimation,
-                    builder: (context, child) {
-                      return Transform.translate(offset: Offset(0, _positionAnimation.value), child: child);
-                    },
-                    child: LogoWidget(type: LogoType.svg),
+            child: FadeTransition(
+              opacity: _logoFadeAnimation,
+              child: AnimatedBuilder(
+                animation: _positionAnimation,
+                builder: (context, child) {
+                  return Transform.translate(offset: Offset(0, _positionAnimation.value), child: child);
+                },
+                child: LogoWidget(type: LogoType.svg),
+              ),
+            ),
+          ),
+          // Loading indicator at the bottom
+          Positioned(
+            bottom: 80,
+            left: 0,
+            right: 0,
+            child: FadeTransition(
+              opacity: _fadeAnimation,
+              child: Column(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
+                      border: Border.all(color: Color(0xffE3E3E3)),
+                    ),
+                    child: SizedBox(
+                      width: 200,
+                      child: AnimatedBuilder(
+                        animation: _progressAnimation,
+                        builder: (context, child) {
+                          return Container(
+                            height: 8,
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.white),
+                            child: Stack(
+                              children: [
+                                Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                FractionallySizedBox(
+                                  widthFactor: _progressAnimation.value,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: const Color(0xFFE53E3E), // Red color
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
                   ),
-                ),
-                44.gap,
-                // Fade in animation for welcome message
-                FadeTransition(
-                  opacity: _fadeAnimation,
-                  child: Text(
-                    LocaleKeys.welcome_to_must_invest.tr(),
-                    style: context.bodyLarge.bold.s16.copyWith(color: AppColors.white),
+                  const SizedBox(height: 16),
+                  Text(
+                    LocaleKeys.loading.tr(),
+                    style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w400),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],
