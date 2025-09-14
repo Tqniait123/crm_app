@@ -1466,6 +1466,10 @@
   "on_boarding_two_subtitle": "منصة مصممة لفرق المبيعات لزيادة الإنتاجية وتحقيق الأهداف بسهولة",
 
   "on_boarding_three_title": "سيطر على كل فرصة بيع",
-  "on_boarding_three_subtitle": "من أول تواصل مع العميل وحتى إغلاق الصفقة – إدارة سهلة وفعالة"
+  "on_boarding_three_subtitle": "من أول تواصل مع العميل وحتى إغلاق الصفقة – إدارة سهلة وفعالة",
+   "by_signing_up_you_agree_to_our": "من خلال التسجيل، فإنك توافق على ",
+  "terms_of_service": "شروط الخدمة",
+  "and": " و ",
+  "data_processing_agreement": "اتفاقية معالجة البيانات"
 
 }

@@ -1419,7 +1419,11 @@ class CodegenLoader extends AssetLoader{
   "on_boarding_two_title": "The Future of Real Estate Sales",
   "on_boarding_two_subtitle": "A platform designed for sales teams to boost productivity and hit targets with ease",
   "on_boarding_three_title": "Take Control of Every Sales Opportunity",
-  "on_boarding_three_subtitle": "From first client contact to deal closure – manage it all in simple, effective steps"
+  "on_boarding_three_subtitle": "From first client contact to deal closure – manage it all in simple, effective steps",
+  "by_signing_up_you_agree_to_our": "By signing up, you agree to our ",
+  "terms_of_service": "Terms of Service",
+  "and": " and ",
+  "data_processing_agreement": "Data Processing Agreement"
 };
 static const Map<String,dynamic> _ar = {
   "field_is_required": {
@@ -2826,7 +2830,11 @@ static const Map<String,dynamic> _ar = {
   "on_boarding_two_title": "مستقبل مبيعات العقارات",
   "on_boarding_two_subtitle": "منصة مصممة لفرق المبيعات لزيادة الإنتاجية وتحقيق الأهداف بسهولة",
   "on_boarding_three_title": "سيطر على كل فرصة بيع",
-  "on_boarding_three_subtitle": "من أول تواصل مع العميل وحتى إغلاق الصفقة – إدارة سهلة وفعالة"
+  "on_boarding_three_subtitle": "من أول تواصل مع العميل وحتى إغلاق الصفقة – إدارة سهلة وفعالة",
+  "by_signing_up_you_agree_to_our": "من خلال التسجيل، فإنك توافق على ",
+  "terms_of_service": "شروط الخدمة",
+  "and": " و ",
+  "data_processing_agreement": "اتفاقية معالجة البيانات"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": _en, "ar": _ar};
 }

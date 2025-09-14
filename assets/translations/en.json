@@ -1466,7 +1466,10 @@
   "on_boarding_two_subtitle": "A platform designed for sales teams to boost productivity and hit targets with ease",
 
   "on_boarding_three_title": "Take Control of Every Sales Opportunity",
-  "on_boarding_three_subtitle": "From first client contact to deal closure – manage it all in simple, effective steps"
-
+  "on_boarding_three_subtitle": "From first client contact to deal closure – manage it all in simple, effective steps",
+  "by_signing_up_you_agree_to_our": "By signing up, you agree to our ",
+  "terms_of_service": "Terms of Service",
+  "and": " and ",
+  "data_processing_agreement": "Data Processing Agreement"
 
 }

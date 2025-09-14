@@ -35,6 +35,7 @@ class CustomElevatedButton extends StatefulWidget {
   final BorderRadiusGeometry? borderRadius;
   final IconPosition iconPosition;
   final IconType iconType;
+  final bool withDoubleBorder;
 
   const CustomElevatedButton({
     super.key,
@@ -58,6 +59,7 @@ class CustomElevatedButton extends StatefulWidget {
     this.borderRadius,
     this.iconPosition = IconPosition.start,
     this.iconType = IconType.leading,
+    this.withDoubleBorder = true,
   });
 
   @override
@@ -148,10 +150,16 @@ class _CustomElevatedButtonState extends State<CustomElevatedButton> with Single
               child: Opacity(
                 opacity: _isPressed ? 0.7 : (widget.loading ? 0.5 : 1.0),
                 child: Container(
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Color(0xffEFF6FF)),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: widget.withDoubleBorder ? Color(0xffEFF6FF) : Colors.transparent,
+                  ),
                   padding: const EdgeInsets.all(3),
                   child: Container(
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Color(0xffBFDBFE)),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: widget.withDoubleBorder ? Color(0xffBFDBFE) : Colors.transparent,
+                    ),
                     padding: const EdgeInsets.all(2),
 
                     child: Container(

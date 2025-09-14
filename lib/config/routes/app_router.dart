@@ -3,12 +3,15 @@ import 'package:crm_app/config/routes/routes.dart';
 import 'package:crm_app/core/extensions/num_extension.dart';
 import 'package:crm_app/core/extensions/widget_extensions.dart';
 import 'package:crm_app/core/observers/router_observer.dart';
+import 'package:crm_app/core/services/di.dart';
 import 'package:crm_app/core/utils/widgets/buttons/custom_back_button.dart';
+import 'package:crm_app/features/auth/presentation/controller/auth_cubit.dart';
 import 'package:crm_app/features/auth/presentation/views/login_screen.dart';
 import 'package:crm_app/features/on_boarding/presentation/pages/on_boarding_screen.dart';
 import 'package:crm_app/features/splash/presentation/pages/second_splash.dart';
 import 'package:crm_app/features/splash/presentation/pages/splash.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -67,7 +70,7 @@ class AppRouter {
         path: Routes.login,
         builder: (context, state) {
           // Return the LoginScreen widget
-          return const LoginScreen();
+          return BlocProvider(create: (context) => AuthCubit(sl()), child: const LoginScreen());
         },
       ),
     ],

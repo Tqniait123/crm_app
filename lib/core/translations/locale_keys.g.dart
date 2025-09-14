@@ -1399,5 +1399,9 @@ abstract class  LocaleKeys {
   static const on_boarding_two_subtitle = 'on_boarding_two_subtitle';
   static const on_boarding_three_title = 'on_boarding_three_title';
   static const on_boarding_three_subtitle = 'on_boarding_three_subtitle';
+  static const by_signing_up_you_agree_to_our = 'by_signing_up_you_agree_to_our';
+  static const terms_of_service = 'terms_of_service';
+  static const and = 'and';
+  static const data_processing_agreement = 'data_processing_agreement';
 
 }
