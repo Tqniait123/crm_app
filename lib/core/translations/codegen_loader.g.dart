@@ -1413,7 +1413,13 @@ class CodegenLoader extends AssetLoader{
   "continue_to_home": "Continue to Home",
   "order_summary": "Order Summary",
   "payment_error": "Payment Error",
-  "congratulations": "Congratulations!"
+  "congratulations": "Congratulations!",
+  "on_boarding_one_title": "Sell Faster, Achieve More",
+  "on_boarding_one_subtitle": "All your sales tools in one place to track clients and close deals smarter",
+  "on_boarding_two_title": "The Future of Real Estate Sales",
+  "on_boarding_two_subtitle": "A platform designed for sales teams to boost productivity and hit targets with ease",
+  "on_boarding_three_title": "Take Control of Every Sales Opportunity",
+  "on_boarding_three_subtitle": "From first client contact to deal closure – manage it all in simple, effective steps"
 };
 static const Map<String,dynamic> _ar = {
   "field_is_required": {
@@ -2814,7 +2820,13 @@ static const Map<String,dynamic> _ar = {
   "continue_to_home": "العودة للرئيسية",
   "order_summary": "ملخص الطلب",
   "payment_error": "خطأ في الدفع",
-  "congratulations": "تهانينا!"
+  "congratulations": "تهانينا!",
+  "on_boarding_one_title": "بِع أسرع وحقق أكثر",
+  "on_boarding_one_subtitle": "كل أدوات المبيعات في مكان واحد لتتبع العملاء وإغلاق الصفقات بذكاء",
+  "on_boarding_two_title": "مستقبل مبيعات العقارات",
+  "on_boarding_two_subtitle": "منصة مصممة لفرق المبيعات لزيادة الإنتاجية وتحقيق الأهداف بسهولة",
+  "on_boarding_three_title": "سيطر على كل فرصة بيع",
+  "on_boarding_three_subtitle": "من أول تواصل مع العميل وحتى إغلاق الصفقة – إدارة سهلة وفعالة"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": _en, "ar": _ar};
 }

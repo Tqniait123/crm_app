@@ -1,6 +1,58 @@
 {
   "version": "2.0.0",
   "tasks": [
+
+    {
+            "label": "Add Translation & Generate",
+            "dependsOn": [
+
+                "Generate Easy Localization with Keys",
+                "Generate Easy Localization"
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": []
+        },
+         {
+            "label": "Generate Easy Localization with Keys",
+            "type": "shell",
+            "command": "dart",
+            "args": [
+                "run",
+                "easy_localization:generate",
+                "-S",
+                "assets/translations",
+                "-O",
+                "lib/core/translations",
+                "-f",
+                "keys",
+                "-o",
+                "locale_keys.g.dart"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Generate Easy Localization",
+            "type": "shell",
+            "command": "dart",
+            "args": [
+                "run",
+                "easy_localization:generate",
+                "-S",
+                "assets/translations",
+                "-O",
+                "lib/core/translations"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+
     {
       "label": "Replace lib folder with setup_project lib",
       "type": "shell",

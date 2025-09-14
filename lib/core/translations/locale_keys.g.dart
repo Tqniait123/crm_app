@@ -1393,5 +1393,11 @@ abstract class  LocaleKeys {
   static const order_summary = 'order_summary';
   static const payment_error = 'payment_error';
   static const congratulations = 'congratulations';
+  static const on_boarding_one_title = 'on_boarding_one_title';
+  static const on_boarding_one_subtitle = 'on_boarding_one_subtitle';
+  static const on_boarding_two_title = 'on_boarding_two_title';
+  static const on_boarding_two_subtitle = 'on_boarding_two_subtitle';
+  static const on_boarding_three_title = 'on_boarding_three_title';
+  static const on_boarding_three_subtitle = 'on_boarding_three_subtitle';
 
 }

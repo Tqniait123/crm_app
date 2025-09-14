@@ -1458,6 +1458,14 @@
   "continue_to_home": "العودة للرئيسية",
   "order_summary": "ملخص الطلب",
   "payment_error": "خطأ في الدفع",
-  "congratulations": "تهانينا!"
+  "congratulations": "تهانينا!",
+  "on_boarding_one_title": "بِع أسرع وحقق أكثر",
+  "on_boarding_one_subtitle": "كل أدوات المبيعات في مكان واحد لتتبع العملاء وإغلاق الصفقات بذكاء",
+
+  "on_boarding_two_title": "مستقبل مبيعات العقارات",
+  "on_boarding_two_subtitle": "منصة مصممة لفرق المبيعات لزيادة الإنتاجية وتحقيق الأهداف بسهولة",
+
+  "on_boarding_three_title": "سيطر على كل فرصة بيع",
+  "on_boarding_three_subtitle": "من أول تواصل مع العميل وحتى إغلاق الصفقة – إدارة سهلة وفعالة"
 
 }

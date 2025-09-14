@@ -225,17 +225,15 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           // Page content
           _buildPageContent(),
 
-          const SizedBox(height: 24),
+          // const SizedBox(height: 24),
 
           // Page indicators
-          _buildPageIndicators(),
-
-          const SizedBox(height: 32),
+          // _buildPageIndicators(),
+          // const SizedBox(height: 32),
 
           // Action buttons
-          _buildActionButtons(),
-
-          const SizedBox(height: 20),
+          // _buildActionButtons(),
+          // const SizedBox(height: 20),
         ],
       ),
     );
@@ -284,8 +282,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   Widget _buildPageContent() {
     return Container(
-      constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.25),
-      child: CustomPageView(currentPage: _currentPage, pageController: _pageController),
+      constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.7),
+      child: CustomPageView(currentPage: _currentPage, pageController: _pageController, buttons: _buildActionButtons()),
     );
   }
 
@@ -307,10 +305,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     return Column(
       children: [
         // Main action button (Next/Login)
-        CustomElevatedButton(
-          title: _currentPage < 2 ? LocaleKeys.next.tr() : LocaleKeys.login.tr(),
-          onPressed: _handleNextButton,
-        ),
+        if (_currentPage == 2) CustomElevatedButton(title: LocaleKeys.login.tr(), onPressed: _handleNextButton),
 
         20.gap,
 
