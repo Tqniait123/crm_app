@@ -1425,5 +1425,16 @@
   "clock_out_confirmation_success": "You have successfully clocked out",
   "clock_in_failed": "Failed to clock in",
   "clock_out_failed": "Failed to clock out",
-  "clock_in_success": "You have successfully clocked in"
+  "clock_in_success": "You have successfully clocked in",
+  "total_project": "Total Project",
+  "total_leads": "Total Leads",
+  "total_properties": "Total Properties",
+  "total_meeting": "Total Meeting",
+  "meeting_name": "Meeting Name",
+  "edit": "Edit",
+  "current_leads": "Current Leads",
+  "view_all": "View All",
+  "view_details": "View Details",
+  "leads": "Leads",
+  "meeting": "Meeting"
 }

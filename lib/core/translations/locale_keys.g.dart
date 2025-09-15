@@ -1421,5 +1421,16 @@ abstract class  LocaleKeys {
   static const clock_in_failed = 'clock_in_failed';
   static const clock_out_failed = 'clock_out_failed';
   static const clock_in_success = 'clock_in_success';
+  static const total_project = 'total_project';
+  static const total_leads = 'total_leads';
+  static const total_properties = 'total_properties';
+  static const total_meeting = 'total_meeting';
+  static const meeting_name = 'meeting_name';
+  static const edit = 'edit';
+  static const current_leads = 'current_leads';
+  static const view_all = 'view_all';
+  static const view_details = 'view_details';
+  static const leads = 'leads';
+  static const meeting = 'meeting';
 
 }

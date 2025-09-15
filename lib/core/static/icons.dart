@@ -16,4 +16,10 @@ static const String searchIc = '$_iconsPath/search_ic.svg';
 static const String eyeIc = '$_iconsPath/eye_ic.svg';
 static const String wideLogo = '$_iconsPath/wide_logo.svg';
 static const String notificationsIc = '$_iconsPath/notifications_ic.svg';
+static const String projectIc = '$_iconsPath/project_ic.svg';
+static const String leadsIc = '$_iconsPath/leads_ic.svg';
+static const String propertiesIc = '$_iconsPath/properties_ic.svg';
+static const String meetingIc = '$_iconsPath/meeting_ic.svg';
+static const String homeIc = '$_iconsPath/home_ic.svg';
+static const String profileIc = '$_iconsPath/profile_ic.svg';
 }

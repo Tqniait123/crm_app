@@ -1441,7 +1441,18 @@ class CodegenLoader extends AssetLoader{
   "clock_out_confirmation_success": "You have successfully clocked out",
   "clock_in_failed": "Failed to clock in",
   "clock_out_failed": "Failed to clock out",
-  "clock_in_success": "You have successfully clocked in"
+  "clock_in_success": "You have successfully clocked in",
+  "total_project": "Total Project",
+  "total_leads": "Total Leads",
+  "total_properties": "Total Properties",
+  "total_meeting": "Total Meeting",
+  "meeting_name": "Meeting Name",
+  "edit": "Edit",
+  "current_leads": "Current Leads",
+  "view_all": "View All",
+  "view_details": "View Details",
+  "leads": "Leads",
+  "meeting": "Meeting"
 };
 static const Map<String,dynamic> _ar = {
   "field_is_required": {
@@ -2870,7 +2881,18 @@ static const Map<String,dynamic> _ar = {
   "clock_out_confirmation_success": "تم تسجيل خروجك بنجاح",
   "clock_in_failed": "فشل تسجيل الدخول",
   "clock_out_failed": "فشل تسجيل الخروج",
-  "clock_in_success": "تم تسجيل دخولك بنجاح"
+  "clock_in_success": "تم تسجيل دخولك بنجاح",
+  "total_project": "إجمالي المشاريع",
+  "total_leads": "إجمالي العملاء المحتملين",
+  "total_properties": "إجمالي العقارات",
+  "total_meeting": "إجمالي الاجتماعات",
+  "meeting_name": "اسم الاجتماع",
+  "edit": "تعديل",
+  "current_leads": "العملاء المحتملين الحاليين",
+  "view_all": "عرض الكل",
+  "view_details": "عرض التفاصيل",
+  "leads": "العملاء المحتملين",
+  "meeting": "اجتماع"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": _en, "ar": _ar};
 }

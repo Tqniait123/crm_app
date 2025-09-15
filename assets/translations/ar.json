@@ -1426,6 +1426,16 @@
   "clock_out_confirmation_success": "تم تسجيل خروجك بنجاح",
   "clock_in_failed": "فشل تسجيل الدخول",
   "clock_out_failed": "فشل تسجيل الخروج",
-  "clock_in_success": "تم تسجيل دخولك بنجاح"
-
+  "clock_in_success": "تم تسجيل دخولك بنجاح",
+  "total_project": "إجمالي المشاريع",
+  "total_leads": "إجمالي العملاء المحتملين",
+  "total_properties": "إجمالي العقارات",
+  "total_meeting": "إجمالي الاجتماعات",
+  "meeting_name": "اسم الاجتماع",
+  "edit": "تعديل",
+  "current_leads": "العملاء المحتملين الحاليين",
+  "view_all": "عرض الكل",
+  "view_details": "عرض التفاصيل",
+  "leads": "العملاء المحتملين",
+  "meeting": "اجتماع"
 }

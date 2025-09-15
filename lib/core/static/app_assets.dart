@@ -11,6 +11,10 @@ class AppImages {
   static const String onBoarding1 = '$_assetsPath/on_boarding_1.png';
   static const String onBoarding2 = '$_assetsPath/on_boarding_2.png';
   static const String onBoarding3 = '$_assetsPath/on_boarding_3.png';
+  static const String leads = '$_assetsPath/leads.png';
+  static const String properties = '$_assetsPath/properties.png';
+  static const String project = '$_assetsPath/project.png';
+  static const String meeting = '$_assetsPath/meeting.png';
 }
 
 class AppAnimations {
