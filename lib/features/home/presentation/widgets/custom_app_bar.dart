@@ -1,5 +1,9 @@
+import 'package:crm_app/core/extensions/string_to_icon.dart';
 import 'package:crm_app/core/static/constants.dart';
+import 'package:crm_app/core/static/icons.dart';
+import 'package:crm_app/core/translations/locale_keys.g.dart';
 import 'package:crm_app/core/utils/widgets/buttons/notifications_button.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -31,11 +35,17 @@ class CustomAppBar extends StatelessWidget {
           // Profile Image
           GestureDetector(
             onTap: onProfileTap,
-            child: CircleAvatar(
-              radius: 24,
-              backgroundImage: NetworkImage(Constants.placeholderImage),
-              // Fallback if image fails to load
-              child: userImage.isEmpty ? const Icon(Icons.person, size: 24, color: Colors.white) : null,
+            child: Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(color: Colors.white, width: 2),
+              ),
+              child: CircleAvatar(
+                radius: 24,
+                backgroundImage: NetworkImage(Constants.placeholderImage),
+                // Fallback if image fails to load
+                child: userImage.isEmpty ? const Icon(Icons.person, size: 24, color: Colors.white) : null,
+              ),
             ),
           ),
 
@@ -52,7 +62,7 @@ class CustomAppBar extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        'My Location',
+                        LocaleKeys.my_location.tr(),
                         style: TextStyle(fontSize: 14, color: Colors.grey[600], fontWeight: FontWeight.w400),
                       ),
                       const SizedBox(width: 4),
@@ -62,12 +72,12 @@ class CustomAppBar extends StatelessWidget {
                   const SizedBox(height: 2),
                   Row(
                     children: [
-                      Icon(Icons.location_on, size: 16, color: Colors.brown[600]),
+                      AppIcons.locationPinIc.icon(),
                       const SizedBox(width: 4),
                       Expanded(
                         child: Text(
                           location,
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.brown[700]),
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Color(0xff553B11)),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),

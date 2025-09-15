@@ -1403,5 +1403,6 @@ abstract class  LocaleKeys {
   static const terms_of_service = 'terms_of_service';
   static const and = 'and';
   static const data_processing_agreement = 'data_processing_agreement';
+  static const my_location = 'my_location';
 
 }

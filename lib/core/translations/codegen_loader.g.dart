@@ -1423,7 +1423,8 @@ class CodegenLoader extends AssetLoader{
   "by_signing_up_you_agree_to_our": "By signing up, you agree to our ",
   "terms_of_service": "Terms of Service",
   "and": " and ",
-  "data_processing_agreement": "Data Processing Agreement"
+  "data_processing_agreement": "Data Processing Agreement",
+  "my_location": "My Location"
 };
 static const Map<String,dynamic> _ar = {
   "field_is_required": {
@@ -2834,7 +2835,8 @@ static const Map<String,dynamic> _ar = {
   "by_signing_up_you_agree_to_our": "من خلال التسجيل، فإنك توافق على ",
   "terms_of_service": "شروط الخدمة",
   "and": " و ",
-  "data_processing_agreement": "اتفاقية معالجة البيانات"
+  "data_processing_agreement": "اتفاقية معالجة البيانات",
+  "my_location": "موقعي"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": _en, "ar": _ar};
 }
