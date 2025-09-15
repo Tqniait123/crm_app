@@ -34,43 +34,48 @@ class NotificationButton extends StatelessWidget {
     return GestureDetector(
       onTap: onNotificationTap,
       child: Stack(
+        alignment: Alignment.center,
         children: [
-          // Main container with gradient border at bottom
+          // Oval background
           Container(
+            width: 45,
+            height: 58,
             decoration: BoxDecoration(
-              shape: BoxShape.circle,
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(30), // Creates oval shape
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
                   Colors.transparent,
                   Colors.transparent,
-                  Color(0xFFFF6B6B).withOpacity(0.3), // Light red gradient
-                  Color(0xFFFF3838).withOpacity(0.5), // Matching the badge color
+                  Colors.transparent,
+                  Colors.transparent,
+                  Colors.transparent,
+
+                  Color(0xFFFF6B6B).withOpacity(0.8),
+                  // AppColors.primary,
                 ],
-                stops: [0.0, 0.6, 0.8, 1.0],
               ),
             ),
-            child: Badge(
-              label: Text(
-                notificationCount.toString(),
-                style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600),
+          ),
+          // Circular container on top
+          Badge(
+            label: Text(
+              notificationCount.toString(),
+              style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600),
+            ),
+            largeSize: 20,
+            smallSize: 20,
+            backgroundColor: Color(0xffFF3838),
+            child: Container(
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+                boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 8, offset: const Offset(0, 2))],
               ),
-              largeSize: 20,
-              smallSize: 20,
-              backgroundColor: Color(0xffFF3838),
-              child: Container(
-                margin: EdgeInsets.all(2), // Small margin to show gradient border
-                padding: const EdgeInsets.all(14),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 8, offset: const Offset(0, 2)),
-                  ],
-                ),
-                child: AppIcons.notificationsIc.icon(),
-              ),
+              child: AppIcons.notificationsIc.icon(),
             ),
           ),
         ],
