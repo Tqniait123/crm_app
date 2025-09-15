@@ -1424,7 +1424,24 @@ class CodegenLoader extends AssetLoader{
   "terms_of_service": "Terms of Service",
   "and": " and ",
   "data_processing_agreement": "Data Processing Agreement",
-  "my_location": "My Location"
+  "my_location": "My Location",
+  "you_are_clocked_in": "You are currently clocked in",
+  "you_are_clocked_out": "You are currently clocked out",
+  "clock_in": "Clock In",
+  "clock_out": "Clock Out",
+  "clock_in_confirmation_title": "Clock In Confirmation",
+  "clock_in_confirmation_message": "Are you sure you want to clock in?",
+  "clock_in_confirmation_ok": "Clock In",
+  "clock_in_confirmation_cancel": "Cancel",
+  "clock_in_confirmation_success": "You have successfully clocked in",
+  "clock_out_confirmation_title": "Clock Out Confirmation",
+  "clock_out_confirmation_message": "Are you sure you want to clock out?",
+  "clock_out_confirmation_ok": "Clock Out",
+  "clock_out_confirmation_cancel": "Cancel",
+  "clock_out_confirmation_success": "You have successfully clocked out",
+  "clock_in_failed": "Failed to clock in",
+  "clock_out_failed": "Failed to clock out",
+  "clock_in_success": "You have successfully clocked in"
 };
 static const Map<String,dynamic> _ar = {
   "field_is_required": {
@@ -2836,7 +2853,24 @@ static const Map<String,dynamic> _ar = {
   "terms_of_service": "شروط الخدمة",
   "and": " و ",
   "data_processing_agreement": "اتفاقية معالجة البيانات",
-  "my_location": "موقعي"
+  "my_location": "موقعي",
+  "you_are_clocked_in": "أنت مسجل دخول حالياً",
+  "you_are_clocked_out": "أنت مسجل خروج حالياً",
+  "clock_in": "تسجيل دخول",
+  "clock_out": "تسجيل خروج",
+  "clock_in_confirmation_title": "تأكيد تسجيل الدخول",
+  "clock_in_confirmation_message": "هل أنت متأكد أنك تريد تسجيل الدخول؟",
+  "clock_in_confirmation_ok": "تسجيل دخول",
+  "clock_in_confirmation_cancel": "إلغاء",
+  "clock_in_confirmation_success": "تم تسجيل دخولك بنجاح",
+  "clock_out_confirmation_title": "تأكيد تسجيل الخروج",
+  "clock_out_confirmation_message": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+  "clock_out_confirmation_ok": "تسجيل خروج",
+  "clock_out_confirmation_cancel": "إلغاء",
+  "clock_out_confirmation_success": "تم تسجيل خروجك بنجاح",
+  "clock_in_failed": "فشل تسجيل الدخول",
+  "clock_out_failed": "فشل تسجيل الخروج",
+  "clock_in_success": "تم تسجيل دخولك بنجاح"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": _en, "ar": _ar};
 }

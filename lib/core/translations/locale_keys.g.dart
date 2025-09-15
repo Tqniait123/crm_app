@@ -1404,5 +1404,22 @@ abstract class  LocaleKeys {
   static const and = 'and';
   static const data_processing_agreement = 'data_processing_agreement';
   static const my_location = 'my_location';
+  static const you_are_clocked_in = 'you_are_clocked_in';
+  static const you_are_clocked_out = 'you_are_clocked_out';
+  static const clock_in = 'clock_in';
+  static const clock_out = 'clock_out';
+  static const clock_in_confirmation_title = 'clock_in_confirmation_title';
+  static const clock_in_confirmation_message = 'clock_in_confirmation_message';
+  static const clock_in_confirmation_ok = 'clock_in_confirmation_ok';
+  static const clock_in_confirmation_cancel = 'clock_in_confirmation_cancel';
+  static const clock_in_confirmation_success = 'clock_in_confirmation_success';
+  static const clock_out_confirmation_title = 'clock_out_confirmation_title';
+  static const clock_out_confirmation_message = 'clock_out_confirmation_message';
+  static const clock_out_confirmation_ok = 'clock_out_confirmation_ok';
+  static const clock_out_confirmation_cancel = 'clock_out_confirmation_cancel';
+  static const clock_out_confirmation_success = 'clock_out_confirmation_success';
+  static const clock_in_failed = 'clock_in_failed';
+  static const clock_out_failed = 'clock_out_failed';
+  static const clock_in_success = 'clock_in_success';
 
 }

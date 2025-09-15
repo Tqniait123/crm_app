@@ -1408,5 +1408,24 @@
   "terms_of_service": "شروط الخدمة",
   "and": " و ",
   "data_processing_agreement": "اتفاقية معالجة البيانات",
-  "my_location": "موقعي"
+  "my_location": "موقعي",
+
+  "you_are_clocked_in": "أنت مسجل دخول حالياً",
+  "you_are_clocked_out": "أنت مسجل خروج حالياً",
+  "clock_in": "تسجيل دخول",
+  "clock_out": "تسجيل خروج",
+  "clock_in_confirmation_title": "تأكيد تسجيل الدخول",
+  "clock_in_confirmation_message": "هل أنت متأكد أنك تريد تسجيل الدخول؟",
+  "clock_in_confirmation_ok": "تسجيل دخول",
+  "clock_in_confirmation_cancel": "إلغاء",
+  "clock_in_confirmation_success": "تم تسجيل دخولك بنجاح",
+  "clock_out_confirmation_title": "تأكيد تسجيل الخروج",
+  "clock_out_confirmation_message": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+  "clock_out_confirmation_ok": "تسجيل خروج",
+  "clock_out_confirmation_cancel": "إلغاء",
+  "clock_out_confirmation_success": "تم تسجيل خروجك بنجاح",
+  "clock_in_failed": "فشل تسجيل الدخول",
+  "clock_out_failed": "فشل تسجيل الخروج",
+  "clock_in_success": "تم تسجيل دخولك بنجاح"
+
 }
