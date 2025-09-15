@@ -6,6 +6,7 @@ import 'package:crm_app/core/functions/unfocus.dart';
 import 'package:crm_app/core/theme/colors.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -129,6 +130,7 @@ class _CustomElevatedButtonState extends State<CustomElevatedButton> with Single
         onTapDown: (_) {
           dismissKeyboard();
           if (!_isPressed) {
+            HapticFeedback.lightImpact(); // ✨ Haptic
             _controller.forward();
             setState(() => _isPressed = true);
           }
@@ -161,10 +163,9 @@ class _CustomElevatedButtonState extends State<CustomElevatedButton> with Single
                       color: widget.withDoubleBorder ? Color(0xffBFDBFE) : Colors.transparent,
                     ),
                     padding: const EdgeInsets.all(2),
-
                     child: Container(
                       width: double.infinity,
-                      height: widget.height?.h ?? 44.h,
+                      height: widget.height?.h ?? 50.h,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         border: widget.isBordered

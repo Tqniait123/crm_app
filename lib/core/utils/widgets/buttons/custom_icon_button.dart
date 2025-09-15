@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart'; // for HapticFeedback
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -49,6 +50,7 @@ class _CustomIconButtonState extends State<CustomIconButton> {
   double _opacity = 1.0;
 
   void _onTapDown() {
+    HapticFeedback.lightImpact(); // ✨ haptic feedback
     setState(() {
       _scale = 0.92;
       _opacity = 0.6;
@@ -77,19 +79,19 @@ class _CustomIconButtonState extends State<CustomIconButton> {
       child: AnimatedScale(
         scale: _scale,
         duration: const Duration(milliseconds: 100),
+        curve: Curves.easeOut,
         child: AnimatedOpacity(
           duration: const Duration(milliseconds: 100),
           opacity: _opacity,
           child: Stack(
             alignment: Alignment.center,
             children: [
-              // Oval background (only if hasOvalBackground is true)
+              // Oval background
               if (widget.hasOvalBackground)
                 Container(
                   width: widget.ovalWidth ?? (widget.width.w * 0.9),
                   height: widget.ovalHeight ?? (widget.height.h * 1.2),
                   decoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
                     borderRadius: BorderRadius.circular(30),
                     gradient:
                         widget.ovalGradient ??
@@ -104,39 +106,59 @@ class _CustomIconButtonState extends State<CustomIconButton> {
                             Colors.transparent,
                             Color(0xFFFF6B6B).withOpacity(0.8),
                           ],
+                          // stops: [0.0, 0.4, 0.7, 1.0],
                         ),
                   ),
                 ),
-              // Main container
-              Container(
-                width: widget.width.w,
-                height: widget.height.h,
-                decoration: BoxDecoration(
-                  color: widget.color,
+              // Main button with InkWell for ripple
+              Material(
+                color: Colors.transparent,
+                borderRadius: widget.buttonType == ButtonType.fullyRounded
+                    ? BorderRadius.circular(widget.radius)
+                    : BorderRadiusDirectional.only(
+                        topStart: Radius.circular(10),
+                        topEnd: Radius.circular(widget.radius),
+                        bottomStart: Radius.circular(widget.radius),
+                        bottomEnd: Radius.circular(widget.radius),
+                      ),
+                child: InkWell(
                   borderRadius: widget.buttonType == ButtonType.fullyRounded
                       ? BorderRadius.circular(widget.radius)
-                      : BorderRadiusDirectional.only(
-                          topStart: Radius.circular(10),
-                          topEnd: Radius.circular(widget.radius),
-                          bottomStart: Radius.circular(widget.radius),
-                          bottomEnd: Radius.circular(widget.radius),
+                      : BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(widget.radius),
+                          bottomLeft: Radius.circular(widget.radius),
+                          bottomRight: Radius.circular(widget.radius),
                         ),
-                  // boxShadow: widget.boxShadow != null
-                  //     ? [widget.boxShadow!]
-                  //     : widget.hasOvalBackground
-                  //     ? [BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 8, offset: const Offset(0, 2))]
-                  // : null,
-                  // border: widget.isBordered
-                  //     ? Border.all(color: widget.borderColor ?? AppColors.greyED, width: 2.0)
-                  //     : null,
-                  // shape: widget.hasOvalBackground ? BoxShape.circle : BoxShape.rectangle,
-                ),
-                child: Center(
-                  child: SvgPicture.asset(
-                    height: 20.r,
-                    width: 20.r,
-                    widget.iconAsset,
-                    colorFilter: widget.iconColor != null ? ColorFilter.mode(widget.iconColor!, BlendMode.srcIn) : null,
+                  onTap: widget.onPressed,
+                  onTapDown: (_) => _onTapDown(),
+                  onTapCancel: _onTapCancel,
+                  splashColor: Colors.white.withOpacity(0.2), // ripple
+                  highlightColor: Colors.white.withOpacity(0.1), // subtle press
+                  child: Container(
+                    width: widget.width.w,
+                    height: widget.height.h,
+                    decoration: BoxDecoration(
+                      color: widget.color,
+                      borderRadius: widget.buttonType == ButtonType.fullyRounded
+                          ? BorderRadius.circular(widget.radius)
+                          : BorderRadiusDirectional.only(
+                              topStart: Radius.circular(10),
+                              topEnd: Radius.circular(widget.radius),
+                              bottomStart: Radius.circular(widget.radius),
+                              bottomEnd: Radius.circular(widget.radius),
+                            ),
+                    ),
+                    child: Center(
+                      child: SvgPicture.asset(
+                        height: 20.r,
+                        width: 20.r,
+                        widget.iconAsset,
+                        colorFilter: widget.iconColor != null
+                            ? ColorFilter.mode(widget.iconColor!, BlendMode.srcIn)
+                            : null,
+                      ),
+                    ),
                   ),
                 ),
               ),
