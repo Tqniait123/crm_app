@@ -1,7 +1,4 @@
 import 'package:crm_app/core/static/constants.dart';
-import 'package:crm_app/core/static/icons.dart';
-import 'package:crm_app/core/theme/colors.dart';
-import 'package:crm_app/core/utils/widgets/buttons/custom_icon_button.dart';
 import 'package:crm_app/core/utils/widgets/buttons/notifications_button.dart';
 import 'package:flutter/material.dart';
 
@@ -83,7 +80,6 @@ class CustomAppBar extends StatelessWidget {
 
           // Notification Bell
           NotificationButton(onNotificationTap: onNotificationTap, notificationCount: notificationCount),
-          CustomIconButton(color: AppColors.white, iconAsset: AppIcons.arrowBackIc, onPressed: () {}),
         ],
       ),
     );
