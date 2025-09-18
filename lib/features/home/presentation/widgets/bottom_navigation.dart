@@ -15,22 +15,10 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
   int selectedIndex = 0;
 
   final List<BottomNavItem> navItems = [
-    BottomNavItem(
-      icon: AppIcons.homeIc,
-      label: LocaleKeys.home.tr(),
-    ),
-    BottomNavItem(
-      icon: AppIcons.leadsIc,
-      label: LocaleKeys.leads.tr(),
-    ),
-    BottomNavItem(
-      icon: AppIcons.meetingIc,
-      label: LocaleKeys.meeting.tr(),
-    ),
-    BottomNavItem(
-      icon: AppIcons.profileIc,
-      label: LocaleKeys.profile.tr(),
-    ),
+    BottomNavItem(icon: AppIcons.homeFilled, label: LocaleKeys.home.tr()),
+    BottomNavItem(icon: AppIcons.leadsFilled, label: LocaleKeys.leads.tr()),
+    BottomNavItem(icon: AppIcons.meetingFilled, label: LocaleKeys.meeting.tr()),
+    BottomNavItem(icon: AppIcons.profileFilled, label: LocaleKeys.profile.tr()),
   ];
 
   @override
@@ -39,13 +27,7 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
       height: 90,
       decoration: BoxDecoration(
         color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 20,
-            offset: const Offset(0, -5),
-          ),
-        ],
+        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 20, offset: const Offset(0, -5))],
       ),
       child: SafeArea(
         child: Padding(
@@ -78,20 +60,12 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
                               ? const LinearGradient(
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
-                                  colors: [
-                                    Color(0xFFEF7676),
-                                    Color(0xFFE92929),
-                                  ],
+                                  colors: [Color(0xFFEF7676), Color(0xFFE92929)],
                                 )
                               : null,
                           borderRadius: BorderRadius.circular(16),
                         ),
-                        child: Center(
-                          child: item.icon.icon(
-                            color: isSelected ? Colors.white : Colors.grey[400],
-                          
-                          ),
-                        ),
+                        child: Center(child: item.icon.icon(color: isSelected ? Colors.white : Colors.grey[400])),
                       ),
 
                       const SizedBox(height: 4),
@@ -121,8 +95,5 @@ class BottomNavItem {
   final String icon;
   final String label;
 
-  BottomNavItem({
-    required this.icon,
-    required this.label,
-  });
+  BottomNavItem({required this.icon, required this.label});
 }

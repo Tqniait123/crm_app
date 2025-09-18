@@ -1,13 +1,16 @@
 import 'dart:developer';
 
 import 'package:crm_app/core/extensions/string_to_icon.dart';
+import 'package:crm_app/core/extensions/text_style_extension.dart';
+import 'package:crm_app/core/extensions/theme_extension.dart';
 import 'package:crm_app/core/static/constants.dart';
 import 'package:crm_app/core/static/icons.dart';
+import 'package:crm_app/core/theme/colors.dart';
 import 'package:crm_app/core/translations/locale_keys.g.dart';
+import 'package:crm_app/features/home/data/models/responses/meeting.dart';
 import 'package:crm_app/features/home/presentation/widgets/meeting_custom_painter.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_image_stack/flutter_image_stack.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class CalendarWidget extends StatefulWidget {
@@ -37,15 +40,22 @@ class _CalendarWidgetState extends State<CalendarWidget> {
     _meetings[normalizedToday] = [
       Meeting(
         title: "Meeting Name",
-        description: "Our goal is ...",
+        description:
+            "Our goal is to ensure that you have everything you need to feel comfortable, confident, and ready to make an impact.",
         organizer: "Mohamed Yasser",
         // notice this is for yesterday
-        dateTime: DateTime(today.year, today.month, today.day - 1, 10, 0),
+        dateTime: DateTime(today.year, today.month, today.day, 10, 0),
         participants: [
-          Constants.placeholderImage,
-          Constants.placeholderImage,
-          Constants.placeholderImage,
-          Constants.placeholderImage,
+          "https://randomuser.me/api/portraits/men/11.jpg",
+          "https://randomuser.me/api/portraits/women/12.jpg",
+          "https://randomuser.me/api/portraits/men/13.jpg",
+          "https://randomuser.me/api/portraits/women/14.jpg",
+          "https://randomuser.me/api/portraits/men/15.jpg",
+          "https://randomuser.me/api/portraits/women/16.jpg",
+          "https://randomuser.me/api/portraits/men/17.jpg",
+          "https://randomuser.me/api/portraits/women/18.jpg",
+          "https://randomuser.me/api/portraits/men/19.jpg",
+          "https://randomuser.me/api/portraits/women/20.jpg",
         ],
       ),
     ];
@@ -103,9 +113,9 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                   // Enhanced Calendar with table_calendar
                   Container(
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.1),
+                      color: Colors.transparent,
                       borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: Colors.white.withOpacity(0.2)),
+                      // border: Border.all(color: Colors.white.withOpacity(0.2)),
                     ),
                     child: TableCalendar<Meeting>(
                       firstDay: DateTime.utc(2020, 1, 1),
@@ -212,9 +222,9 @@ class _CalendarWidgetState extends State<CalendarWidget> {
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.15),
+        // color: Colors.white.withOpacity(0.15),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white.withOpacity(0.2)),
+        // border: Border.all(color: Colors.white.withOpacity(0.2)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -223,22 +233,32 @@ class _CalendarWidgetState extends State<CalendarWidget> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
-                child: Text(
-                  meeting.title,
-                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+
+                  children: [
+                    Text(
+                      meeting.title,
+                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
+                    ),
+
+                    const SizedBox(height: 8),
+
+                    Text(meeting.description, style: context.bodyMedium.s10.regular.copyWith(color: Colors.white)),
+                  ],
                 ),
               ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                decoration: BoxDecoration(color: Colors.white.withOpacity(0.2), borderRadius: BorderRadius.circular(8)),
+                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(8)),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    AppIcons.editIc.icon(color: Colors.white),
+                    AppIcons.edit2Ic.icon(color: AppColors.primary),
                     const SizedBox(width: 4),
                     Text(
                       LocaleKeys.edit.tr(),
-                      style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: Colors.white),
+                      style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: Colors.black),
                     ),
                   ],
                 ),
@@ -246,19 +266,21 @@ class _CalendarWidgetState extends State<CalendarWidget> {
             ],
           ),
 
-          const SizedBox(height: 8),
-
-          Text(meeting.description, style: TextStyle(fontSize: 14, color: Colors.white.withOpacity(0.8))),
-
           const SizedBox(height: 16),
 
           Row(
             children: [
               // Organizer profile image
-              CircleAvatar(
-                radius: 20,
-                backgroundColor: Colors.white,
-                child: CircleAvatar(radius: 18, backgroundImage: NetworkImage(Constants.placeholderImage)),
+              Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.white),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    image: DecorationImage(image: NetworkImage(Constants.placeholderImage), fit: BoxFit.cover),
+                  ),
+                ),
               ),
 
               const SizedBox(width: 12),
@@ -290,53 +312,76 @@ class _CalendarWidgetState extends State<CalendarWidget> {
   }
 
   Widget _buildParticipantsStack(List<String> participants) {
-    if (participants.isEmpty) return const SizedBox.shrink();
+    if (participants.isEmpty) {
+      return const SizedBox.shrink();
+    }
 
-    // Show max 3 images in stack, then show count
+    // Log participants for debugging
+    log('Participants count: ${participants.length}');
+    log('Participant URLs: $participants');
+
+    // Show max 3 images in stack
     final displayParticipants = participants.take(3).toList();
-    final extraCount = participants.length - displayParticipants.length;
+    log('Display participants: $displayParticipants');
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration: BoxDecoration(color: Colors.white.withOpacity(0.2), borderRadius: BorderRadius.circular(12)),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          FlutterImageStack(
-            imageList: displayParticipants,
-            totalCount: displayParticipants.length,
-            itemRadius: 16,
-            itemCount: displayParticipants.length,
-            itemBorderWidth: 2,
-            itemBorderColor: Colors.white,
-            backgroundColor: Colors.transparent,
-          ),
-          if (extraCount > 0) ...[
-            const SizedBox(width: 8),
-            Text(
-              '+$extraCount',
-              style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: Colors.white),
+          SizedBox(
+            width: 100,
+            height: 40,
+            child: Stack(
+              alignment: Alignment.centerLeft,
+              children: displayParticipants.asMap().entries.map((entry) {
+                final index = entry.key;
+                final url = entry.value;
+                return Positioned(
+                  left: index * 25.0, // Offset each image
+                  child: Container(
+                    width: 36,
+                    height: 36,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.white, width: 2),
+                    ),
+                    child: ClipOval(
+                      child: Image.network(
+                        url,
+                        width: 36,
+                        height: 36,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          log('Failed to load image: $url, error: $error');
+                          return const Icon(Icons.error, size: 20, color: Colors.red);
+                        },
+                      ),
+                    ),
+                  ),
+                );
+              }).toList(),
             ),
-          ],
+          ),
+          if (participants.length > 3)
+            Container(
+              width: 36,
+              height: 36,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.white.withOpacity(0.2),
+                border: Border.all(color: Colors.white, width: 2),
+              ),
+              child: Center(
+                child: Text(
+                  '+${participants.length - 3}',
+                  style: const TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
         ],
       ),
     );
   }
-}
-
-// Meeting model class
-class Meeting {
-  final String title;
-  final String description;
-  final String organizer;
-  final DateTime dateTime;
-  final List<String> participants;
-
-  Meeting({
-    required this.title,
-    required this.description,
-    required this.organizer,
-    required this.dateTime,
-    required this.participants,
-  });
 }
