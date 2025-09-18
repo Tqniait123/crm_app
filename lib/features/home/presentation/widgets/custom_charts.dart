@@ -227,3 +227,5 @@ class BottlePainter extends CustomPainter {
         oldDelegate.isAnimated != isAnimated;
   }
 }
+
+

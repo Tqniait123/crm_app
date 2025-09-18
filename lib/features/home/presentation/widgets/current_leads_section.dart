@@ -1,5 +1,6 @@
 import 'package:crm_app/core/extensions/num_extension.dart';
 import 'package:crm_app/core/extensions/string_to_icon.dart';
+import 'package:crm_app/core/static/constants.dart';
 import 'package:crm_app/core/static/icons.dart';
 import 'package:crm_app/core/translations/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -57,7 +58,7 @@ class CurrentLeadsSection extends StatelessWidget {
       'time': 'Estimate Time',
       'contact': 'Mohamed Yasser',
       'contactAction': 'Followed up',
-      'profileImage': 'https://via.placeholder.com/48',
+      'profileImage': Constants.placeholderImage,
       'statusColor': Colors.green,
     },
     {
@@ -69,7 +70,7 @@ class CurrentLeadsSection extends StatelessWidget {
       'time': 'Estimate Time',
       'contact': 'Mohamed Yasser',
       'contactAction': 'Followed up',
-      'profileImage': 'https://via.placeholder.com/48',
+      'profileImage': Constants.placeholderImage,
       'statusColor': Colors.green,
     },
   ];
