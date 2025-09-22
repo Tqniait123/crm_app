@@ -1,6 +1,7 @@
 class AppIcons {
   static const String _iconsPath = 'assets/images/icons';
 static const String locationPinIc = '$_iconsPath/location_pin_ic.svg';
+static const String gridFillIc = '$_iconsPath/grid_fill_ic.svg';
 static const String edit2Ic = '$_iconsPath/edit_2_ic.svg';
 static const String home = '$_iconsPath/home.svg';
 static const String logoIc = '$_iconsPath/logo_ic.svg';
@@ -11,6 +12,7 @@ static const String ar = '$_iconsPath/ar.svg';
 static const String meeting = '$_iconsPath/meeting.svg';
 static const String homeFilled = '$_iconsPath/home_filled.svg';
 static const String editIc = '$_iconsPath/edit_ic.svg';
+static const String tableFillIc = '$_iconsPath/table_fill_ic.svg';
 static const String filterIc = '$_iconsPath/filter_ic.svg';
 static const String facebook = '$_iconsPath/facebook.svg';
 static const String eyeSlashIc = '$_iconsPath/eye_slash_ic.svg';

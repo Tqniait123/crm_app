@@ -7,11 +7,19 @@ import 'package:crm_app/core/utils/widgets/buttons/custom_icon_button.dart';
 import 'package:crm_app/core/utils/widgets/buttons/notifications_button.dart';
 import 'package:crm_app/core/utils/widgets/inputs/custom_form_field.dart';
 import 'package:crm_app/features/home/presentation/widgets/custom_app_bar.dart';
+import 'package:crm_app/features/leads/presentation/widgets/custom_toggle_button.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-class LeadsScreen extends StatelessWidget {
+class LeadsScreen extends StatefulWidget {
   const LeadsScreen({super.key});
+
+  @override
+  State<LeadsScreen> createState() => _LeadsScreenState();
+}
+
+class _LeadsScreenState extends State<LeadsScreen> {
+  bool isGridSelected = true;
 
   @override
   Widget build(BuildContext context) {
@@ -66,6 +74,21 @@ class LeadsScreen extends StatelessWidget {
                             child: AppIcons.filterIc.icon(),
                           ),
                         ),
+                      ),
+                      10.gap,
+                      CustomToggleButton.gridTable(
+                        isGridSelected: isGridSelected,
+                        onToggle: (isGrid) {
+                          setState(() {
+                            isGridSelected = isGrid;
+                          });
+                          // Handle your logic here
+                          if (isGrid) {
+                            // Show grid view
+                          } else {
+                            // Show table view
+                          }
+                        },
                       ),
                     ],
                   ),
