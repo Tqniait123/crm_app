@@ -6,6 +6,7 @@ class Routes {
   static const String register = '/register';
   static const String registerStepTwo = '/registerStepTwo';
   static const String registerStepThree = '/registerStepThree';
+  static const String layout = '/layout';
   static const String login = '/login';
   static const String home = '/home';
 

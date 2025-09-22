@@ -1,19 +1,10 @@
-import 'package:crm_app/core/extensions/flipped_for_lcale.dart';
 import 'package:crm_app/core/extensions/num_extension.dart';
-import 'package:crm_app/core/extensions/string_to_icon.dart';
-import 'package:crm_app/core/extensions/text_style_extension.dart';
-import 'package:crm_app/core/extensions/theme_extension.dart';
-import 'package:crm_app/core/static/icons.dart';
-import 'package:crm_app/core/translations/locale_keys.g.dart';
-import 'package:crm_app/core/utils/widgets/inputs/custom_form_field.dart';
 import 'package:crm_app/core/widgets/custom_scaffold.dart';
-import 'package:crm_app/features/home/presentation/widgets/custom_app_bar.dart';
-import 'package:crm_app/features/home/presentation/widgets/clock_in_card.dart';
-import 'package:crm_app/features/home/presentation/widgets/statistics_grid.dart';
 import 'package:crm_app/features/home/presentation/widgets/calendar_widget.dart';
+import 'package:crm_app/features/home/presentation/widgets/clock_in_card.dart';
 import 'package:crm_app/features/home/presentation/widgets/current_leads_section.dart';
-import 'package:crm_app/features/home/presentation/widgets/bottom_navigation.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:crm_app/features/home/presentation/widgets/custom_app_bar.dart';
+import 'package:crm_app/features/home/presentation/widgets/statistics_grid.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -61,7 +52,7 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const CustomBottomNavigation(),
+      // bottomNavigationBar: const CustomBottomNavigation(),
     );
   }
 }

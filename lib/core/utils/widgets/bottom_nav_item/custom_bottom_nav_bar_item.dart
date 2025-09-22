@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:crm_app/core/static/app_styles.dart';
 import 'package:crm_app/core/theme/colors.dart';
 import 'package:crm_app/core/utils/widgets/long_press_effect.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomBottomNavigationBarItem extends StatelessWidget {
   final String title;
@@ -41,7 +41,7 @@ class CustomBottomNavigationBarItem extends StatelessWidget {
             isSelected ? iconFilledPath : iconPath,
             colorFilter: !isSelected
                 ? const ColorFilter.mode(AppColors.grey60, BlendMode.srcIn)
-                : const ColorFilter.mode(AppColors.secondary, BlendMode.srcIn),
+                : const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
             height: 27.h,
           ),
           const SizedBox(height: 5),
@@ -50,7 +50,7 @@ class CustomBottomNavigationBarItem extends StatelessWidget {
             child: Text(
               title,
               style: AppStyles.medium12black.copyWith(
-                color: isSelected ? AppColors.secondary : AppColors.grey78,
+                color: isSelected ? AppColors.primary : AppColors.grey78,
                 fontWeight: isSelected ? FontWeight.w500 : FontWeight.w400,
               ),
             ),

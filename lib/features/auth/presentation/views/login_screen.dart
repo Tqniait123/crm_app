@@ -111,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
             CustomElevatedButton(
               title: LocaleKeys.login.tr(),
               onPressed: () {
-                context.push(Routes.home);
+                context.push(Routes.layout);
               },
             ),
             32.gap,
