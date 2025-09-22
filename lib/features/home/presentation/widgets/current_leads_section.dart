@@ -27,15 +27,22 @@ class CurrentLeadsSection extends StatelessWidget {
                 LocaleKeys.current_leads.tr(),
                 style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
               ),
-              Row(
-                children: [
-                  Text(
-                    LocaleKeys.view_all.tr(),
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.grey[600]),
-                  ),
-                  8.gap,
-                  Icon(Icons.help_outline, size: 20, color: Colors.grey[600]),
-                ],
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  border: Border.all(color: const Color(0xFF061F35).withOpacity(0.12)),
+                ),
+                child: Row(
+                  children: [
+                    Text(
+                      LocaleKeys.view_all.tr(),
+                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.grey[600]),
+                    ),
+                    8.gap,
+                    Icon(Icons.arrow_circle_left_outlined, size: 20, color: AppColors.primary),
+                  ],
+                ),
               ),
             ],
           ),
