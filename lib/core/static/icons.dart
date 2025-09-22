@@ -24,5 +24,6 @@ static const String eyeIc = '$_iconsPath/eye_ic.svg';
 static const String profile = '$_iconsPath/profile.svg';
 static const String wideLogo = '$_iconsPath/wide_logo.svg';
 static const String leads = '$_iconsPath/leads.svg';
+static const String plusIc = '$_iconsPath/plus_ic.svg';
 static const String notificationsIc = '$_iconsPath/notifications_ic.svg';
 }

@@ -15,7 +15,10 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         children: [
           // Pinned Custom App Bar
-          CustomAppBar(
+          CustomAppBar.profile(
+            userName: "Mahmoud Eldengawy",
+            location: "Damietta , Egypt",
+
             notificationCount: 6,
             onLocationTap: () {
               print("Location tapped");

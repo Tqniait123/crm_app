@@ -1,6 +1,10 @@
+import 'package:crm_app/core/extensions/num_extension.dart';
 import 'package:crm_app/core/extensions/string_to_icon.dart';
 import 'package:crm_app/core/static/icons.dart';
+import 'package:crm_app/core/theme/colors.dart';
 import 'package:crm_app/core/translations/locale_keys.g.dart';
+import 'package:crm_app/core/utils/widgets/buttons/custom_icon_button.dart';
+import 'package:crm_app/core/utils/widgets/buttons/notifications_button.dart';
 import 'package:crm_app/core/utils/widgets/inputs/custom_form_field.dart';
 import 'package:crm_app/features/home/presentation/widgets/custom_app_bar.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -15,18 +19,25 @@ class LeadsScreen extends StatelessWidget {
       child: Column(
         children: [
           // Pinned Custom App Bar
-          CustomAppBar(
-            notificationCount: 6,
-            onLocationTap: () {
-              print("Location tapped");
-            },
-            onNotificationTap: () {
-              print("Notification tapped");
-            },
-            onProfileTap: () {
-              print("Profile tapped");
-            },
+          CustomAppBar.custom(
+            customContent: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CustomIconButton(
+                  color: AppColors.white,
+                  iconAsset: AppIcons.plusIc,
+                  onPressed: () {},
+                  buttonType: ButtonType.withAngel,
+                ),
+                Text(
+                  LocaleKeys.leads.tr(),
+                  style: const TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                NotificationButton(onNotificationTap: () {}, notificationCount: 7),
+              ],
+            ),
           ),
+          22.gap,
 
           // Scrollable content
           Expanded(
