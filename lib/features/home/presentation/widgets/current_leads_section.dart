@@ -11,32 +11,34 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class CurrentLeadsSection extends StatelessWidget {
-  const CurrentLeadsSection({super.key});
+  final bool withTitle;
+  const CurrentLeadsSection({super.key, this.withTitle = true});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         // Header
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              LocaleKeys.current_leads.tr(),
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
-            ),
-            Row(
-              children: [
-                Text(
-                  LocaleKeys.view_all.tr(),
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.grey[600]),
-                ),
-                8.gap,
-                Icon(Icons.help_outline, size: 20, color: Colors.grey[600]),
-              ],
-            ),
-          ],
-        ),
+        if (withTitle)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                LocaleKeys.current_leads.tr(),
+                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+              ),
+              Row(
+                children: [
+                  Text(
+                    LocaleKeys.view_all.tr(),
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.grey[600]),
+                  ),
+                  8.gap,
+                  Icon(Icons.help_outline, size: 20, color: Colors.grey[600]),
+                ],
+              ),
+            ],
+          ),
 
         20.gap,
 
@@ -54,26 +56,62 @@ class CurrentLeadsSection extends StatelessWidget {
 
   static final List<Map<String, dynamic>> _mockLeads = [
     {
-      'name': 'Lead name',
-      'status': 'Discussion',
-      'description': 'Our goal is to ensure that you have everything you need to build successful...',
-      'location': '23/B Kumapara, Sylhet',
-      'date': '05 Sep, 2025',
-      'time': 'Estimate Time',
-      'contact': 'Mohamed Yasser',
-      'contactAction': 'Followed up',
+      'name': 'محمد علي',
+      'status': 'مناقشة',
+      'description': 'هدفنا هو التأكد من أن لديك كل ما تحتاجه لبناء مشروع ناجح...',
+      'location': '١٢ شارع النيل، القاهرة',
+      'date': '٠٥ سبتمبر، ٢٠٢٥',
+      'time': 'الوقت المتوقع',
+      'contact': 'أحمد حسن',
+      'contactAction': 'تم المتابعة',
       'profileImage': Constants.placeholderImage,
       'statusColor': Colors.green,
     },
     {
-      'name': 'Lead nam',
-      'status': 'Discussion',
-      'description': 'Our goal is to ensure that you have everything you need to build successful...',
-      'location': '23/B Kumapara, Sylhet',
-      'date': '05 Sep, 2025',
-      'time': 'Estimate Time',
-      'contact': 'Mohamed Yasser',
-      'contactAction': 'Followed up',
+      'name': 'سارة محمود',
+      'status': 'جديد',
+      'description': 'تم التواصل مع العميل، ونحن في انتظار الرد النهائي...',
+      'location': '٤٥ شارع الزيتون، الإسكندرية',
+      'date': '١٠ سبتمبر، ٢٠٢٥',
+      'time': 'الوقت المتوقع',
+      'contact': 'محمود سمير',
+      'contactAction': 'تمت الإضافة',
+      'profileImage': Constants.placeholderImage,
+      'statusColor': Colors.blue,
+    },
+    {
+      'name': 'أحمد صلاح',
+      'status': 'متابعة',
+      'description': 'تم الاتفاق على عقد اجتماع لمناقشة تفاصيل المشروع...',
+      'location': '٣ شارع التحرير، الجيزة',
+      'date': '١٢ سبتمبر، ٢٠٢٥',
+      'time': '١٢:٠٠ ظهراً',
+      'contact': 'منى علي',
+      'contactAction': 'تمت المتابعة',
+      'profileImage': Constants.placeholderImage,
+      'statusColor': Colors.orange,
+    },
+    {
+      'name': 'ليلى سمير',
+      'status': 'مغلقة',
+      'description': 'تم إغلاق الصفقة بنجاح وتوقيع العقد النهائي مع العميل...',
+      'location': '٨ شارع الملك فيصل، أسوان',
+      'date': '١٥ سبتمبر، ٢٠٢٥',
+      'time': '٣:٠٠ عصراً',
+      'contact': 'خالد محمود',
+      'contactAction': 'تم الإغلاق',
+      'profileImage': Constants.placeholderImage,
+      'statusColor': Colors.red,
+    },
+    {
+      'name': 'يوسف كمال',
+      'status': 'مناقشة',
+      'description': 'العميل مهتم بالخدمة ويحتاج لتفاصيل إضافية قبل اتخاذ القرار...',
+      'location': '٢٣ شارع العرب، الأقصر',
+      'date': '٢٠ سبتمبر، ٢٠٢٥',
+      'time': 'الوقت المتوقع',
+      'contact': 'هالة عبد الله',
+      'contactAction': 'تم المتابعة',
       'profileImage': Constants.placeholderImage,
       'statusColor': Colors.green,
     },

@@ -6,6 +6,7 @@ import 'package:crm_app/core/translations/locale_keys.g.dart';
 import 'package:crm_app/core/utils/widgets/buttons/custom_icon_button.dart';
 import 'package:crm_app/core/utils/widgets/buttons/notifications_button.dart';
 import 'package:crm_app/core/utils/widgets/inputs/custom_form_field.dart';
+import 'package:crm_app/features/home/presentation/widgets/current_leads_section.dart';
 import 'package:crm_app/features/home/presentation/widgets/custom_app_bar.dart';
 import 'package:crm_app/features/leads/presentation/widgets/custom_toggle_button.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -92,6 +93,8 @@ class _LeadsScreenState extends State<LeadsScreen> {
                       ),
                     ],
                   ),
+                  const CurrentLeadsSection(withTitle: false),
+                  100.gap, // Bottom padding for navigation
                 ],
               ),
             ),
