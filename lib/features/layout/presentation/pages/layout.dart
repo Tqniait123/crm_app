@@ -3,7 +3,9 @@ import 'package:crm_app/core/static/constants.dart';
 import 'package:crm_app/core/static/icons.dart';
 import 'package:crm_app/core/translations/locale_keys.g.dart';
 import 'package:crm_app/core/utils/widgets/bottom_nav_item/custom_bottom_nav_bar_item.dart';
+import 'package:crm_app/core/widgets/custom_scaffold.dart';
 import 'package:crm_app/features/home/presentation/views/home_screen.dart';
+import 'package:crm_app/features/leads/presentation/pages/leads_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +20,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
   int _currentIndex = 0;
   final PageController _pageController = PageController(); // Add this line
 
-  final List<Widget> _pages = [const HomeScreen(), Container(), Container(), Container()];
+  final List<Widget> _pages = [const HomeScreen(), LeadsScreen(), Container(), Container()];
 
   @override
   void dispose() {
@@ -33,7 +35,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return CustomScaffold(
       key: Constants.drawerKey,
       backgroundColor: Colors.white,
       // floatingActionButton: FloatingActionButton(
