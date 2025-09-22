@@ -83,17 +83,22 @@ class _LeadsScreenState extends State<LeadsScreen> {
                           setState(() {
                             isGridSelected = isGrid;
                           });
-                          // Handle your logic here
-                          if (isGrid) {
-                            // Show grid view
-                          } else {
-                            // Show table view
-                          }
                         },
                       ),
                     ],
                   ),
-                  const CurrentLeadsSection(withTitle: false),
+                  20.gap,
+
+                  // Animated view switcher
+                  AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 300),
+                    transitionBuilder: (Widget child, Animation<double> animation) {
+                      return FadeTransition(opacity: animation, child: child);
+                    },
+                    child: isGridSelected
+                        ? const CurrentLeadsSection(withTitle: false, key: Key('grid_view'))
+                        : const LeadsTableView(key: Key('table_view')),
+                  ),
                   100.gap, // Bottom padding for navigation
                 ],
               ),
@@ -101,8 +106,124 @@ class _LeadsScreenState extends State<LeadsScreen> {
           ),
         ],
       ),
+    );
+  }
+}
 
-      // bottomNavigationBar: const CustomBottomNavigation(),
+class LeadsTableView extends StatelessWidget {
+  const LeadsTableView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 10, offset: const Offset(0, 2))],
+      ),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width > 600 ? null : 600, // Minimum width for small screens
+          child: Column(
+            children: [
+              // Table Header
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade50,
+                  borderRadius: const BorderRadius.only(topLeft: Radius.circular(12), topRight: Radius.circular(12)),
+                ),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 150,
+                      child: Text(
+                        'Project Name',
+                        style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14, color: Colors.grey.shade700),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 120,
+                      child: Text(
+                        'Zone',
+                        style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14, color: Colors.grey.shade700),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 100,
+                      child: Text(
+                        'Area',
+                        style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14, color: Colors.grey.shade700),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 120,
+                      child: Text(
+                        'Unit Type',
+                        style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14, color: Colors.grey.shade700),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 110,
+                      child: Text(
+                        'Status',
+                        style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14, color: Colors.grey.shade700),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              // Table Rows
+              ...List.generate(8, (index) => _buildTableRow(index)),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTableRow(int index) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 12),
+      decoration: BoxDecoration(
+        border: Border(bottom: BorderSide(color: Colors.grey.shade200, width: 1)),
+      ),
+      child: Row(
+        children: [
+          SizedBox(
+            width: 150,
+            child: Text(
+              'Madinaty',
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black87),
+            ),
+          ),
+          SizedBox(
+            width: 120,
+            child: Text('New Cairo', style: TextStyle(fontSize: 13, color: Colors.grey.shade600)),
+          ),
+          SizedBox(
+            width: 100,
+            child: Text('Area ${(index + 1) * 120}', style: TextStyle(fontSize: 13, color: Colors.grey.shade600)),
+          ),
+          SizedBox(
+            width: 120,
+            child: Text('Apartment', style: TextStyle(fontSize: 13, color: Colors.grey.shade600)),
+          ),
+          SizedBox(
+            width: 110,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+              decoration: BoxDecoration(color: Colors.green.shade100, borderRadius: BorderRadius.circular(16)),
+              child: Text(
+                'Full finished',
+                style: TextStyle(fontSize: 11, color: Colors.green.shade700, fontWeight: FontWeight.w500),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
